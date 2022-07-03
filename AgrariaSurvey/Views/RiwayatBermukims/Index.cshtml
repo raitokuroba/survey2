@@ -1,0 +1,227 @@
+﻿@model IEnumerable<AgrariaSurvey.Models.RiwayatBermukim>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RespondenID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirAyahDariSuami)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirAyahDariSuamiProv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirAyahDariSuamiKota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirAyahDariSuamiKec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirAyahDariSuamiDesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EtnisAyahDariSuami)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TahunKedatanganAyahDariSuamiKeDesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlasanAyahDariSuamiDatangKeDesaIni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirIbuDariSuami)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirIbuDariSuamiProv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirIbuDariSuamiKota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirIbuDariSuamiKec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirIbuDariSuamiDesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EtnisIbuDariSuami)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TahunKedatanganIbuDariSuamiKeDesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlasanIbuDariSuamiDatangKeDesaIni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirAyahDariIstri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirAyahDariIstriProv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirAyahDariIstriKota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirAyahDariIstriKec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirAyahDariIstriDesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EtnisAyahDariIstri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TahunKedatanganAyahDariIstriKeDesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlasanAyahDariIstriDatangKeDesaIni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirIbuDariIstri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirIbuDariIstriProv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirIbuDariIstriKota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirIbuDariIstriKec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahirIbuDariIstriDesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EtnisIbuDariIstri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TahunKedatanganIbuDariIstriKeDesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlasanIbuDariIstriDatangKeDesaIni)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RespondenID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirAyahDariSuami)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirAyahDariSuamiProv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirAyahDariSuamiKota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirAyahDariSuamiKec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirAyahDariSuamiDesa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EtnisAyahDariSuami)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TahunKedatanganAyahDariSuamiKeDesa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlasanAyahDariSuamiDatangKeDesaIni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirIbuDariSuami)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirIbuDariSuamiProv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirIbuDariSuamiKota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirIbuDariSuamiKec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirIbuDariSuamiDesa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EtnisIbuDariSuami)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TahunKedatanganIbuDariSuamiKeDesa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlasanIbuDariSuamiDatangKeDesaIni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirAyahDariIstri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirAyahDariIstriProv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirAyahDariIstriKota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirAyahDariIstriKec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirAyahDariIstriDesa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EtnisAyahDariIstri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TahunKedatanganAyahDariIstriKeDesa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlasanAyahDariIstriDatangKeDesaIni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirIbuDariIstri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirIbuDariIstriProv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirIbuDariIstriKota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirIbuDariIstriKec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempatLahirIbuDariIstriDesa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EtnisIbuDariIstri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TahunKedatanganIbuDariIstriKeDesa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlasanIbuDariIstriDatangKeDesaIni)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RiwayatBermukimID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RiwayatBermukimID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RiwayatBermukimID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

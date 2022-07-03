@@ -1,0 +1,179 @@
+﻿@model IEnumerable<AgrariaSurvey.Models.SewaTanah>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RespondenId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SedangMenyewaTanah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DariSiapaMenyewa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlasanMenyewa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LuasTanahDisewa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BiayaSewaTanah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LokasiLahanSewa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TahunMenyewaTanah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TahunSampaiKontrak)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BentukLegalitasTanah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsahaTanahSewa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TanahSewaSubur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasilUsahaTani)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenagaMengelolaTanah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JumlahAnggotaKeluarga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JumlahBuruhTani)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AsalBuruhTani)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MenyewakanTanah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KepadaSiapaMenyewakan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LuasTanahSewakan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LokasiTanahDisewakan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlasanMenyewakan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UangSewaTanah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TahunMenyewakan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KontrakSewa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RespondenId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SedangMenyewaTanah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DariSiapaMenyewa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlasanMenyewa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LuasTanahDisewa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BiayaSewaTanah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LokasiLahanSewa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TahunMenyewaTanah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TahunSampaiKontrak)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BentukLegalitasTanah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsahaTanahSewa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TanahSewaSubur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasilUsahaTani)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenagaMengelolaTanah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JumlahAnggotaKeluarga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JumlahBuruhTani)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AsalBuruhTani)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenyewakanTanah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KepadaSiapaMenyewakan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LuasTanahSewakan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LokasiTanahDisewakan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlasanMenyewakan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UangSewaTanah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TahunMenyewakan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KontrakSewa)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SewaTanahId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SewaTanahId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SewaTanahId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

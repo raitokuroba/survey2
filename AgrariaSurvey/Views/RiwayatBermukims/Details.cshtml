@@ -1,0 +1,325 @@
+﻿@model AgrariaSurvey.Models.RiwayatBermukim
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="row">
+    <div class="col-lg-6">
+        <h4>RIWAYAT BERMUKIM</h4>
+    </div>
+    <div class="col-lg-6">
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#petunjukModal">Petunjuk</button>
+    </div>
+</div>
+
+<div id="petunjukModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Petunjuk</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>Bagian D</strong> merupakan riwayat asal usul kedatangan Kepala Keluarga ke Desa Ini.  Penelusuran dilakukan dengan melacak kedua orangtua dari pasangan suami-istri tersebut dalam kaitannya dengan sejarah berdomisili di Desa penelitian ini.
+                </p>
+                <p>
+                    Penelusuran dilakukan terhadap orangtua dari pihak suami dan orangtua dari pihak istri.
+                </p>
+                <p>
+                    Jika rumahtangga terdiri lebih dari satu keluarga, maka data yang diambil adalah keluarga (suami dan istri) dari pihak Kepala Keluarga dan/atau berdasarkan Kepala keluarga sebagaimana Kartu Keluarga (KK) yang didaftarkan dalam <strong>Formulir C1</strong>
+                </p>
+                <h5>Output</h5>
+                <p>
+                    Riwayat bermukim rumahtangga, berapa lama tinggal di Desa Ini, identifikasi migrasi dan latar belakangnya, serta keterangan keaslian penduduk di Desa penelitian Ini.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Got It</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div id="readOnly" class="col-md-4">
+        <form asp-action="Details">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RespondenID" value="@ViewBag.RespondenID" />
+            <div class="form-group">
+                <label asp-for="TempatLahirAyahDariSuami" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariSuami" class="form-control" onchange="showTempatLahirAyahDariSuami()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Desa Ini</option>
+                    <option value="2">Luar Desa Ini</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariSuami" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariSuamiProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariSuamiProv" class="control-label"></label>
+                <input asp-for="TempatLahirAyahDariSuamiProv" class="form-control" value="@ViewBag.TempatLahirAyahDariSuamiProv" />
+                <span asp-validation-for="TempatLahirAyahDariSuamiProv" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariSuamiKota" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariSuamiKota" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariSuamiKota" class="form-control">
+                    <option value="">-- Select Provinsi --</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariSuamiKota" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariSuamiKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariSuamiKec" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariSuamiKec" class="form-control">
+                    <option value="">-- Select Kabupaten/Kota --</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariSuamiKec" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariSuamiDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariSuamiDesa" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariSuamiDesa" class="form-control">
+                    <option value="">-- Select Kecamatan --</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariSuamiDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EtnisAyahDariSuami" class="control-label"></label>
+                <input asp-for="EtnisAyahDariSuami" class="form-control" value="@ViewBag.EtnisAyahDariSuami" />
+                <span asp-validation-for="EtnisAyahDariSuami" class="text-danger"></span>
+            </div>
+            <h5>Jika Ayah dari suami bukan berasal dari Desa domisili saat Ini, maka:</h5>
+            <div class="form-group">
+                <label asp-for="TahunKedatanganAyahDariSuamiKeDesa" class="control-label"></label>
+                <input asp-for="TahunKedatanganAyahDariSuamiKeDesa" class="form-control" />
+                <span asp-validation-for="TahunKedatanganAyahDariSuamiKeDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanAyahDariSuamiDatangKeDesaIni" class="control-label"></label>
+                <select asp-for="AlasanAyahDariSuamiDatangKeDesaIni" class="form-control" onchange="showAlasanAyahDariSuamiDatangKeDesaIniLainnya()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Ikut orangtua (sesuai dengan tempat tinggal orangtua)</option>
+                    <option value="2">Mencari nafkah</option>
+                    <option value="3">Menikah</option>
+                    <option value="4">Lainnya</option>
+                </select>
+                <span asp-validation-for="AlasanAyahDariSuamiDatangKeDesaIni" class="text-danger"></span>
+            </div>
+            <div id="AlasanAyahDariSuamiDatangKeDesaIniLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AlasanAyahDariSuamiDatangKeDesaIniLainnya" class="control-label"></label>
+                <input asp-for="AlasanAyahDariSuamiDatangKeDesaIniLainnya" class="form-control" />
+                <span asp-validation-for="AlasanAyahDariSuamiDatangKeDesaIniLainnya" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <label asp-for="TempatLahirIbuDariSuami" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariSuami" class="form-control" onchange="showTempatLahirIbuDariSuami()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Desa Ini</option>
+                    <option value="2">Luar Desa Ini</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariSuami" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariSuamiProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariSuamiProv" class="control-label"></label>
+                <input asp-for="TempatLahirIbuDariSuamiProv" class="form-control" value="@ViewBag.TempatLahirIbuDariSuamiProv" />
+                <span asp-validation-for="TempatLahirIbuDariSuamiProv" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariSuamiKota" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariSuamiKota" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariSuamiKota" class="form-control">
+                    <option value="">-- Select Provinsi --</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariSuamiKota" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariSuamiKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariSuamiKec" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariSuamiKec" class="form-control">
+                    <option value="">-- Select Kabupaten/Kota --</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariSuamiKec" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariSuamiDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariSuamiDesa" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariSuamiDesa" class="form-control">
+                    <option value="">-- Select Kecamatan --</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariSuamiDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EtnisIbuDariSuami" class="control-label"></label>
+                <input asp-for="EtnisIbuDariSuami" class="form-control" value="@ViewBag.EtnisIbuDariSuami" />
+                <span asp-validation-for="EtnisIbuDariSuami" class="text-danger"></span>
+            </div>
+            <h5>Jika Ibu dari suami bukan berasal dari Desa domisili saat Ini, maka:</h5>
+            <div class="form-group">
+                <label asp-for="TahunKedatanganIbuDariSuamiKeDesa" class="control-label"></label>
+                <input asp-for="TahunKedatanganIbuDariSuamiKeDesa" class="form-control" />
+                <span asp-validation-for="TahunKedatanganIbuDariSuamiKeDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanIbuDariSuamiDatangKeDesaIni" class="control-label"></label>
+                <select asp-for="AlasanIbuDariSuamiDatangKeDesaIni" class="form-control" onchange="showAlasanIbuDariSuamiDatangKeDesaIniLainnya()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Ikut orangtua (sesuai dengan tempat tinggal orangtua)</option>
+                    <option value="2">Mencari nafkah</option>
+                    <option value="3">Menikah</option>
+                    <option value="4">Lainnya</option>
+                </select>
+                <span asp-validation-for="AlasanIbuDariSuamiDatangKeDesaIni" class="text-danger"></span>
+            </div>
+            <div id="AlasanIbuDariSuamiDatangKeDesaIniLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AlasanIbuDariSuamiDatangKeDesaIniLainnya" class="control-label"></label>
+                <input asp-for="AlasanIbuDariSuamiDatangKeDesaIniLainnya" class="form-control" />
+                <span asp-validation-for="AlasanIbuDariSuamiDatangKeDesaIniLainnya" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <label asp-for="TempatLahirAyahDariIstri" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariIstri" class="form-control" onchange="showTempatLahirAyahDariIstri()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Desa Ini</option>
+                    <option value="2">Luar Desa Ini</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariIstri" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariIstriProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariIstriProv" class="control-label"></label>
+                <input asp-for="TempatLahirAyahDariIstriProv" class="form-control" value="@ViewBag.TempatLahirAyahDariIstriProv" />
+                <span asp-validation-for="TempatLahirAyahDariIstriProv" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariIstriKota" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariIstriKota" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariIstriKota" class="form-control">
+                    <option value="">-- Select Provinsi --</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariIstriKota" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariIstriKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariIstriKec" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariIstriKec" class="form-control">
+                    <option value="">-- Select Kabupaten/Kota --</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariIstriKec" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariIstriDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariIstriDesa" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariIstriDesa" class="form-control">
+                    <option value="">-- Select Kecamatan --</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariIstriDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EtnisAyahDariIstri" class="control-label"></label>
+                <input asp-for="EtnisAyahDariIstri" class="form-control" value="@ViewBag.EtnisAyahDariIstri" />
+                <span asp-validation-for="EtnisAyahDariIstri" class="text-danger"></span>
+            </div>
+            <h5>Jika Ayah dari istri bukan berasal dari Desa domisili saat Ini, maka:</h5>
+            <div class="form-group">
+                <label asp-for="TahunKedatanganAyahDariIstriKeDesa" class="control-label"></label>
+                <input asp-for="TahunKedatanganAyahDariIstriKeDesa" class="form-control" />
+                <span asp-validation-for="TahunKedatanganAyahDariIstriKeDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanAyahDariIstriDatangKeDesaIni" class="control-label"></label>
+                <select asp-for="AlasanAyahDariIstriDatangKeDesaIni" class="form-control" onchange="showAlasanAyahDariIstriDatangKeDesaIniLainnya()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Ikut orangtua (sesuai dengan tempat tinggal orangtua)</option>
+                    <option value="2">Mencari nafkah</option>
+                    <option value="3">Menikah</option>
+                    <option value="4">Lainnya</option>
+                </select>
+                <span asp-validation-for="AlasanAyahDariIstriDatangKeDesaIni" class="text-danger"></span>
+            </div>
+            <div id="AlasanAyahDariIstriDatangKeDesaIniLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AlasanAyahDariIstriDatangKeDesaIniLainnya" class="control-label"></label>
+                <input asp-for="AlasanAyahDariIstriDatangKeDesaIniLainnya" class="form-control" />
+                <span asp-validation-for="AlasanAyahDariIstriDatangKeDesaIniLainnya" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <label asp-for="TempatLahirIbuDariIstri" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariIstri" class="form-control" onchange="showTempatLahirIbuDariIstri()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Desa Ini</option>
+                    <option value="2">Luar Desa Ini</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariIstri" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariIstriProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariIstriProv" class="control-label"></label>
+                <input asp-for="TempatLahirIbuDariIstriProv" class="form-control" value="@ViewBag.TempatLahirIbuDariIstriProv" />
+                <span asp-validation-for="TempatLahirIbuDariIstriProv" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariIstriKota" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariIstriKota" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariIstriKota" class="form-control">
+                    <option value="">-- Select Provinsi --</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariIstriKota" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariIstriKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariIstriKec" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariIstriKec" class="form-control">
+                    <option value="">-- Select Kabupaten/Kota --</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariIstriKec" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariIstriDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariIstriDesa" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariIstriDesa" class="form-control">
+                    <option value="">-- Select Kecamatan --</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariIstriDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EtnisIbuDariIstri" class="control-label"></label>
+                <input asp-for="EtnisIbuDariIstri" class="form-control" value="@ViewBag.EtnisIbuDariIstri" />
+                <span asp-validation-for="EtnisIbuDariIstri" class="text-danger"></span>
+            </div>
+            <h5>Jika Ibu dari istri bukan berasal dari Desa domisili saat Ini, maka:</h5>
+            <div class="form-group">
+                <label asp-for="TahunKedatanganIbuDariIstriKeDesa" class="control-label"></label>
+                <input asp-for="TahunKedatanganIbuDariIstriKeDesa" class="form-control" />
+                <span asp-validation-for="TahunKedatanganIbuDariIstriKeDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanIbuDariIstriDatangKeDesaIni" class="control-label"></label>
+                <select asp-for="AlasanIbuDariIstriDatangKeDesaIni" class="form-control" onchange="showAlasanIbuDariIstriDatangKeDesaIniLainnya()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Ikut orangtua (sesuai dengan tempat tinggal orangtua)</option>
+                    <option value="2">Mencari nafkah</option>
+                    <option value="3">Menikah</option>
+                    <option value="4">Lainnya</option>
+                </select>
+                <span asp-validation-for="AlasanIbuDariIstriDatangKeDesaIni" class="text-danger"></span>
+            </div>
+            <div id="AlasanIbuDariIstriDatangKeDesaIniLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AlasanIbuDariIstriDatangKeDesaIniLainnya" class="control-label"></label>
+                <input asp-for="AlasanIbuDariIstriDatangKeDesaIniLainnya" class="form-control" />
+                <span asp-validation-for="AlasanIbuDariIstriDatangKeDesaIniLainnya" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Next" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+<div>
+    <a asp-controller="Respondens" asp-action="Index">Back to List</a>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#readOnly').find('input, textarea, select').attr('readonly', 'readonly');
+    });
+</script>

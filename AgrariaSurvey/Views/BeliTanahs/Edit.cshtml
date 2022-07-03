@@ -1,0 +1,149 @@
+﻿@model AgrariaSurvey.Models.BeliTanah
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>BeliTanah</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BeliTanahID" />
+            <div class="form-group">
+                <label asp-for="RespondenID" class="control-label"></label>
+                <input asp-for="RespondenID" class="form-control" />
+                <span asp-validation-for="RespondenID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DariHasilPembelian" class="control-label"></label>
+                <input asp-for="DariHasilPembelian" class="form-control" />
+                <span asp-validation-for="DariHasilPembelian" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TahunPembelian" class="control-label"></label>
+                <input asp-for="TahunPembelian" class="form-control" />
+                <span asp-validation-for="TahunPembelian" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DariSiapaMembeli" class="control-label"></label>
+                <input asp-for="DariSiapaMembeli" class="form-control" />
+                <span asp-validation-for="DariSiapaMembeli" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanPenjualMenjual" class="control-label"></label>
+                <input asp-for="AlasanPenjualMenjual" class="form-control" />
+                <span asp-validation-for="AlasanPenjualMenjual" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CeritakanPenjual" class="control-label"></label>
+                <input asp-for="CeritakanPenjual" class="form-control" />
+                <span asp-validation-for="CeritakanPenjual" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanMembeliLahan" class="control-label"></label>
+                <input asp-for="AlasanMembeliLahan" class="form-control" />
+                <span asp-validation-for="AlasanMembeliLahan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CeritakanMembeli" class="control-label"></label>
+                <input asp-for="CeritakanMembeli" class="form-control" />
+                <span asp-validation-for="CeritakanMembeli" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LuasTanahDibeli" class="control-label"></label>
+                <input asp-for="LuasTanahDibeli" class="form-control" />
+                <span asp-validation-for="LuasTanahDibeli" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LokasiLahanDibeli" class="control-label"></label>
+                <input asp-for="LokasiLahanDibeli" class="form-control" />
+                <span asp-validation-for="LokasiLahanDibeli" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BentukLegalitasDibeli" class="control-label"></label>
+                <input asp-for="BentukLegalitasDibeli" class="form-control" />
+                <span asp-validation-for="BentukLegalitasDibeli" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiusahakanTanahPembelian" class="control-label"></label>
+                <input asp-for="DiusahakanTanahPembelian" class="form-control" />
+                <span asp-validation-for="DiusahakanTanahPembelian" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TanahBeliSubur" class="control-label"></label>
+                <input asp-for="TanahBeliSubur" class="form-control" />
+                <span asp-validation-for="TanahBeliSubur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HasilUsahaTaniTanah" class="control-label"></label>
+                <input asp-for="HasilUsahaTaniTanah" class="form-control" />
+                <span asp-validation-for="HasilUsahaTaniTanah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenagaKerjaTanah" class="control-label"></label>
+                <input asp-for="TenagaKerjaTanah" class="form-control" />
+                <span asp-validation-for="TenagaKerjaTanah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JumlahAnggotaKeluarga" class="control-label"></label>
+                <input asp-for="JumlahAnggotaKeluarga" class="form-control" />
+                <span asp-validation-for="JumlahAnggotaKeluarga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JumlahBuruhTani" class="control-label"></label>
+                <input asp-for="JumlahBuruhTani" class="form-control" />
+                <span asp-validation-for="JumlahBuruhTani" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AsalBuruhTani" class="control-label"></label>
+                <input asp-for="AsalBuruhTani" class="form-control" />
+                <span asp-validation-for="AsalBuruhTani" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PernahMenjualTanah" class="control-label"></label>
+                <input asp-for="PernahMenjualTanah" class="form-control" />
+                <span asp-validation-for="PernahMenjualTanah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KepadaSiapaMenjual" class="control-label"></label>
+                <input asp-for="KepadaSiapaMenjual" class="form-control" />
+                <span asp-validation-for="KepadaSiapaMenjual" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TahunMenjualTanah" class="control-label"></label>
+                <input asp-for="TahunMenjualTanah" class="form-control" />
+                <span asp-validation-for="TahunMenjualTanah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LokasiLahanJual" class="control-label"></label>
+                <input asp-for="LokasiLahanJual" class="form-control" />
+                <span asp-validation-for="LokasiLahanJual" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanMenjualTanah" class="control-label"></label>
+                <input asp-for="AlasanMenjualTanah" class="form-control" />
+                <span asp-validation-for="AlasanMenjualTanah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CeritakanMenjual" class="control-label"></label>
+                <input asp-for="CeritakanMenjual" class="form-control" />
+                <span asp-validation-for="CeritakanMenjual" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

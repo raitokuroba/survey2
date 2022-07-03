@@ -1,0 +1,173 @@
+﻿@model IEnumerable<AgrariaSurvey.Models.BeliTanah>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RespondenID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DariHasilPembelian)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TahunPembelian)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DariSiapaMembeli)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlasanPenjualMenjual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CeritakanPenjual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlasanMembeliLahan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CeritakanMembeli)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LuasTanahDibeli)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LokasiLahanDibeli)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BentukLegalitasDibeli)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiusahakanTanahPembelian)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TanahBeliSubur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasilUsahaTaniTanah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenagaKerjaTanah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JumlahAnggotaKeluarga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JumlahBuruhTani)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AsalBuruhTani)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PernahMenjualTanah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KepadaSiapaMenjual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TahunMenjualTanah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LokasiLahanJual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlasanMenjualTanah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CeritakanMenjual)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RespondenID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DariHasilPembelian)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TahunPembelian)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DariSiapaMembeli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlasanPenjualMenjual)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CeritakanPenjual)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlasanMembeliLahan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CeritakanMembeli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LuasTanahDibeli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LokasiLahanDibeli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BentukLegalitasDibeli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiusahakanTanahPembelian)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TanahBeliSubur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasilUsahaTaniTanah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenagaKerjaTanah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JumlahAnggotaKeluarga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JumlahBuruhTani)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AsalBuruhTani)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PernahMenjualTanah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KepadaSiapaMenjual)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TahunMenjualTanah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LokasiLahanJual)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlasanMenjualTanah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CeritakanMenjual)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BeliTanahID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BeliTanahID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BeliTanahID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

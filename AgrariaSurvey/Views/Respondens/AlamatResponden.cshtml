@@ -1,0 +1,196 @@
+﻿@model AgrariaSurvey.Models.Responden
+
+@{
+    ViewData["Title"] = "Alamat Responden";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<div class="row">
+    <div class="col-lg-6">
+        <h4>Responden</h4>
+    </div>
+    <div class="col-lg-6">
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#petunjukModal">Petunjuk</button>
+    </div>
+</div>
+
+<div id="petunjukModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Petunjuk</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>Bagian A</strong> merupakan alamat tempat tinggal responden.  Di isi mulai dari nama jalan, nomor rumah, RW/RT, dusun/kampung (jika ada), desa/kelurahan, kecamatan, kabupaten/kota, dan provinsi.
+                </p>
+                <h5>Output</h5>
+                <p>
+                    Alamat lengkap dan koordinat spasial
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Got It</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AlamatResponden">
+            <h3>Alamat Responden</h3>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pulau" class="control-label"></label>
+                <select asp-for="Pulau" class="form-control" asp-items="ViewBag.Pulau">
+                    <option>-- Select --</option>
+                </select>
+                <span asp-validation-for="Pulau" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Provinsi" class="control-label"></label>
+                <select asp-for="Provinsi" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option>-- Select --</option>
+                </select>
+                <span asp-validation-for="Provinsi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KabupatenKota" class="control-label"></label>
+                <select asp-for="KabupatenKota" class="form-control">
+                    <option>-- Select Provinsi --</option>
+                </select>
+                <span asp-validation-for="KabupatenKota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kecamatan" class="control-label"></label>
+                <select asp-for="Kecamatan" class="form-control">
+                    <option>-- Select Kabupaten/Kota --</option>
+                </select>
+                <span asp-validation-for="Kecamatan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DesaKelurahan" class="control-label"></label>
+                <select asp-for="DesaKelurahan" class="form-control">
+                    <option>-- Select Kecamatan --</option>
+                </select>
+                <span asp-validation-for="DesaKelurahan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dusun" class="control-label"></label>
+                <input asp-for="Dusun" class="form-control" />
+                <span asp-validation-for="Dusun" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RT" class="control-label"></label>
+                <input asp-for="RT" class="form-control" />
+                <span asp-validation-for="RT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RW" class="control-label"></label>
+                <input asp-for="RW" class="form-control" />
+                <span asp-validation-for="RW" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NamaJalan" class="control-label"></label>
+                <input asp-for="NamaJalan" class="form-control" />
+                <span asp-validation-for="NamaJalan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomorRumah" class="control-label"></label>
+                <input asp-for="NomorRumah" class="form-control" />
+                <span asp-validation-for="NomorRumah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KoordinatAlamatRumah" class="control-label"></label>
+                <input asp-for="KoordinatAlamatRumah" class="form-control" />
+                <span asp-validation-for="KoordinatAlamatRumah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Next" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script type="text/javascript">
+    //Bind Kota/Kabupaten
+    $("#Provinsi").change(function () {
+        var prov = $("#Provinsi").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetKota")',
+            data: {
+                prov: prov
+            },
+            success: function (data) {
+
+                var item = "<option>-- Select --</option>";
+                $("#KabupatenKota").empty();
+                $.each(data, function (i, kota) {
+                    item += '<option value="' + kota.value + '">' + kota.text + '</option>'
+                });
+                $("#KabupatenKota").html(item);
+                $("#Kecamatan").html("<option>-- Select Kabupaten/Kota --</option>");
+                $("#DesaKelurahan").html("<option>-- Select Kecamatan --</option>");
+            }
+        });
+    })
+
+    //Bind Kecamatan
+    $("#KabupatenKota").change(function () {
+        var kota = $("#KabupatenKota").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetKecamatan")',
+            data: {
+                kota: kota
+            },
+            success: function (data) {
+
+                var item = "<option>-- Select --</option>";
+                $("#Kecamatan").empty();
+                $.each(data, function (i, kec) {
+                    item += '<option value="' + kec.value + '">' + kec.text + '</option>'
+                });
+                $("#Kecamatan").html(item);
+                $("#DesaKelurahan").html("<option>-- Select Kecamatan --</option>");
+            }
+        });
+    })
+
+    //Bind Desa
+    $("#Kecamatan").change(function () {
+        var kec = $("#Kecamatan").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetDesa")',
+            data: {
+                kec: kec
+            },
+            success: function (data) {
+
+                var item = "<option>-- Select --</option>";
+                $("#DesaKelurahan").empty();
+                $.each(data, function (i, desa) {
+                    item += '<option value="' + desa.value + '">' + desa.text + '</option>'
+                });
+                $("#DesaKelurahan").html(item);
+            }
+        });
+    })
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,140 @@
+﻿@model AgrariaSurvey.Models.IdentitasKeluargaRumahTangga
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<div class="row">
+    <div class="col-lg-6">
+        <h4>IDENTITAS KELUARGA / RUMAH TANGGA</h4>
+    </div>
+    <div class="col-lg-6">
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#petunjukModal">Petunjuk</button>
+    </div>
+</div>
+
+<div id="petunjukModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Petunjuk</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>Bagian C</strong> merupakan identitas keluarga/rumahtangga. Dimulai dari memeriksa KK (Kartu Keluarga). Mengidentifikasi siapa kepala keluarga dan jenis kelaminnya.  Berapa banyak jumlah anggota rumahtangga dan terdiri atas berapa keluarga.  Identifikasi siapa yang menajdi tulang punggung keluarga dalam rumah tangga tersebut.
+                </p>
+                <p>
+                    Rumahtangga adalah semua orang yang tinggal dalam rumah tersebut terlepas memiliki hubungan keluarga atau tidak, tinggal di rumah yang sama minimal 1 tahun dan/atau terdaftar dalam dalam KK/memiliki alamat KTP (Kartu Tanda Penduduk) yang sama.
+                </p>
+                <p>
+                    Keluarga adalah orang yang memiliki hubungan darah dan/atau karena hubungan pernikahan.  Dalam satu ruamhtangga bisa terdiri atas beberapa keluarga inti.
+                </p>
+                <p>
+                    Tulang punggung rumahtangga adalah orang yang secara rutin memberikan nafkah ekonomi kepada rumahtangga tersebut dan menjadi sumber penghidupan perekonomian utama, terlepas tulang punggung ini memiliki hubungan kekeluargaan ataupun tidak dengan rumahtangga tersebut.  Tulang punggung ini bisa tinggal menetap di rumah tersebut ataupun tidak.
+                </p>
+                <h5>Output</h5>
+                <p>
+                    Identitas keluarga terkait siapa kepala keluarga, seberapa besar anggota rumahtangga, jumlah keluarga dalam rumahtangga, dan siapa yang menjadi tulang punggung rumahtangga.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Got It</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdentitasKeluargaRumahTanggaID" />
+            <input type="hidden" asp-for="RespondenID" value="@ViewBag.RespondenID" />
+            <div class="form-group">
+                <label asp-for="NoKK" class="control-label"></label>
+                <input asp-for="NoKK" class="form-control" />
+                <span asp-validation-for="NoKK" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FotoKK" class="control-label"></label>
+                <input asp-for="FotoKK" class="form-control" type="file" />
+                <span asp-validation-for="FotoKK" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NamaKepalaKeluarga" class="control-label"></label>
+                <input asp-for="NamaKepalaKeluarga" class="form-control" />
+                <span asp-validation-for="NamaKepalaKeluarga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JenisKelaminKepalaKeluarga" class="control-label"></label>
+                <select asp-for="JenisKelaminKepalaKeluarga" class="form-control">
+                    <option>-- Select --</option>
+                    <option value="1">Perempuan</option>
+                    <option value="2">Laki-laki</option>
+                </select>
+                <span asp-validation-for="JenisKelaminKepalaKeluarga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JumlahAnggotaRumahTangga" class="control-label"></label>
+                <input asp-for="JumlahAnggotaRumahTangga" class="form-control" />
+                <span asp-validation-for="JumlahAnggotaRumahTangga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JumlahKeluargaDalamRumahTangga" class="control-label"></label>
+                <input asp-for="JumlahKeluargaDalamRumahTangga" class="form-control" />
+                <span asp-validation-for="JumlahKeluargaDalamRumahTangga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NamaTulangPunggungRumahTangga" class="control-label"></label>
+                <input asp-for="NamaTulangPunggungRumahTangga" class="form-control" />
+                <span asp-validation-for="NamaTulangPunggungRumahTangga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JenisKelaminTulangPunggungRumahTangga" class="control-label"></label>
+                <select asp-for="JenisKelaminTulangPunggungRumahTangga" class="form-control">
+                    <option>-- Select --</option>
+                    <option value="1">Perempuan</option>
+                    <option value="2">Laki-laki</option>
+                </select>
+                <span asp-validation-for="JenisKelaminTulangPunggungRumahTangga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StatusTulangPunggungRumahTanggaDalamKeluarga" class="control-label"></label>
+                <select asp-for="StatusTulangPunggungRumahTanggaDalamKeluarga" class="form-control">
+                    <option>-- Select --</option>
+                    <option value="1">Status 1</option>
+                    <option value="2">Status 2</option>
+                    <option value="3">Status 3</option>
+                </select>
+                <span asp-validation-for="StatusTulangPunggungRumahTanggaDalamKeluarga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApakahTulangPunggungKeluargaTinggalMenetapDiRumahResponden" class="control-label"></label>
+                <select asp-for="ApakahTulangPunggungKeluargaTinggalMenetapDiRumahResponden" class="form-control">
+                    <option>-- Select --</option>
+                    <option value="1">Menetap</option>
+                    <option value="2">Tidak menetap</option>
+                </select>
+                <span asp-validation-for="ApakahTulangPunggungKeluargaTinggalMenetapDiRumahResponden" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save & Next" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+<div>
+    <a asp-controller="Respondens" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

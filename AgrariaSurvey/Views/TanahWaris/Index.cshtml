@@ -1,0 +1,287 @@
+﻿@model IEnumerable<AgrariaSurvey.Models.TanahWaris>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RespondenID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BapakMemilikiLahanWaris)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SistemPewarisan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LuasTanahSebelum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LuasTanahDiwariskan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TahunDiwariskan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BentukLegalitas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LokasiLahan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FungsiLahanSebelum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FungsiLahanSesudah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasilUsahaTani)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TanahWarisanSubur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenagaYangMengelola)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnggotaKeluargaYangBekerja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StrukturArt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JumlahBuruh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AsalBuruh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MengalihkanTanah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TahunMengalihkan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransaksiPengalihanPemilikan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KepadaSiapaPengalihan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlasanMengalihkan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuMemilikiLahanWaris)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuSistemPewarisan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuLuasTanahSebelum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuLuasTanahDiwariskan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuTahunDiwariskan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuBentukLegalitas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuLokasiLahan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuFungsiLahanSebelum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuFungsiLahanSesudah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuHasilUsahaTani)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuTanahWarisanSubur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuTenagaYangMengelola)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuAnggotaKeluargaYangBekerja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuStrukturArt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuJumlahBuruh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuAsalBuruh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuMengalihkanTanah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuTahunMengalihkan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuTransaksiPengalihanPemilikan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuKepadaSiapaPengalihan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IbuAlasanMengalihkan)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RespondenID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BapakMemilikiLahanWaris)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SistemPewarisan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LuasTanahSebelum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LuasTanahDiwariskan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TahunDiwariskan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BentukLegalitas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LokasiLahan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FungsiLahanSebelum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FungsiLahanSesudah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasilUsahaTani)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TanahWarisanSubur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenagaYangMengelola)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnggotaKeluargaYangBekerja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StrukturArt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JumlahBuruh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AsalBuruh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MengalihkanTanah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TahunMengalihkan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransaksiPengalihanPemilikan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KepadaSiapaPengalihan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlasanMengalihkan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuMemilikiLahanWaris)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuSistemPewarisan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuLuasTanahSebelum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuLuasTanahDiwariskan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuTahunDiwariskan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuBentukLegalitas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuLokasiLahan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuFungsiLahanSebelum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuFungsiLahanSesudah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuHasilUsahaTani)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuTanahWarisanSubur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuTenagaYangMengelola)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuAnggotaKeluargaYangBekerja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuStrukturArt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuJumlahBuruh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuAsalBuruh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuMengalihkanTanah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuTahunMengalihkan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuTransaksiPengalihanPemilikan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuKepadaSiapaPengalihan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IbuAlasanMengalihkan)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TanahWarisID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TanahWarisID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TanahWarisID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

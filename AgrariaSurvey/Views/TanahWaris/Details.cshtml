@@ -1,0 +1,329 @@
+﻿@model AgrariaSurvey.Models.TanahWaris
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="row">
+    <div class="col-lg-6">
+        <h4>Tanah Waris</h4>
+    </div>
+    <div class="col-lg-6">
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#petunjukModal">Petunjuk</button>
+    </div>
+</div>
+
+<div id="petunjukModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Petunjuk</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>Bagian G</strong> Mmerupakan identifikasi penguasaan/pemilikan, pemanfaatan dan pengelolaan tanah dari pihak suami dan istri yang diperoleh melalui pewarisan tanah.
+
+                    <h5>Output</h5>
+                <p>
+                    Analisis fragmentasi lahan, transfer tanah, dan perubahan tata guna tanah melalui mekanisme pewarisan tanah
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Got It</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <h3>Tanah Waris</h3>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RespondenID" value="@ViewBag.RespondenID" />
+            <div class="form-group">
+                <label asp-for="BapakMemilikiLahanWaris" class="control-label"></label>
+                <select asp-for="BapakMemilikiLahanWaris" class="form-control">
+                    <option>-- Select --</option>
+                    <option value="1">YA</option>
+                    <option value="2">TIDAK</option>
+                </select>
+                <span asp-validation-for="BapakMemilikiLahanWaris" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SistemPewarisan" class="control-label"></label>
+                <select asp-for="SistemPewarisan" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="SistemPewarisan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LuasTanahSebelum" class="control-label"></label>
+                <select asp-for="LuasTanahSebelum" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="LuasTanahSebelum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LuasTanahDiwariskan" class="control-label"></label>
+                <input asp-for="LuasTanahDiwariskan" class="form-control" />
+                <span asp-validation-for="LuasTanahDiwariskan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TahunDiwariskan" class="control-label"></label>
+                <input asp-for="TahunDiwariskan" class="form-control" />
+                <span asp-validation-for="TahunDiwariskan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BentukLegalitas" class="control-label"></label>
+                <input asp-for="BentukLegalitas" class="form-control" />
+                <span asp-validation-for="BentukLegalitas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LokasiLahan" class="control-label"></label>
+                <input asp-for="LokasiLahan" class="form-control" />
+                <span asp-validation-for="LokasiLahan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FungsiLahanSebelum" class="control-label"></label>
+                <select asp-for="FungsiLahanSebelum" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="FungsiLahanSebelum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FungsiLahanSesudah" class="control-label"></label>
+                <select asp-for="FungsiLahanSesudah" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="FungsiLahanSesudah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HasilUsahaTani" class="control-label"></label>
+                <select asp-for="HasilUsahaTani" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="HasilUsahaTani" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TanahWarisanSubur" class="control-label"></label>
+                <select asp-for="TanahWarisanSubur" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="TanahWarisanSubur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenagaYangMengelola" class="control-label"></label>
+                <select asp-for="TenagaYangMengelola" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="TenagaYangMengelola" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnggotaKeluargaYangBekerja" class="control-label"></label>
+                <input asp-for="AnggotaKeluargaYangBekerja" class="form-control" />
+                <span asp-validation-for="AnggotaKeluargaYangBekerja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StrukturArt" class="control-label"></label>
+                <input asp-for="StrukturArt" class="form-control" />
+                <span asp-validation-for="StrukturArt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JumlahBuruh" class="control-label"></label>
+                <input asp-for="JumlahBuruh" class="form-control" />
+                <span asp-validation-for="JumlahBuruh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AsalBuruh" class="control-label"></label>
+                <select asp-for="AsalBuruh" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="AsalBuruh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MengalihkanTanah" class="control-label"></label>
+                <input asp-for="MengalihkanTanah" class="form-control" />
+                <span asp-validation-for="MengalihkanTanah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TahunMengalihkan" class="control-label"></label>
+                <input asp-for="TahunMengalihkan" class="form-control" />
+                <span asp-validation-for="TahunMengalihkan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransaksiPengalihanPemilikan" class="control-label"></label>
+                <select asp-for="TransaksiPengalihanPemilikan" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="TransaksiPengalihanPemilikan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KepadaSiapaPengalihan" class="control-label"></label>
+                <select asp-for="KepadaSiapaPengalihan" class="form-control">
+                    <option>-- Select --</option>
+                    <option value="1">Keluarga</option>
+                    <option value="2">Warga/Tetangga</option>
+                    <option value="3">Pihak luar desa ini</option>
+                </select>
+                <span asp-validation-for="KepadaSiapaPengalihan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanMengalihkan" class="control-label"></label>
+                <select asp-for="AlasanMengalihkan" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="AlasanMengalihkan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuMemilikiLahanWaris" class="control-label"></label>
+                <select asp-for="IbuMemilikiLahanWaris" class="form-control">
+                    <option>-- Select --</option>
+                    <option value="1">YA</option>
+                    <option value="2">TIDAK</option>
+                </select>
+                <span asp-validation-for="IbuMemilikiLahanWaris" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuSistemPewarisan" class="control-label"></label>
+                <select asp-for="IbuSistemPewarisan" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="IbuSistemPewarisan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuLuasTanahSebelum" class="control-label"></label>
+                <select asp-for="IbuLuasTanahSebelum" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="IbuLuasTanahSebelum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuLuasTanahDiwariskan" class="control-label"></label>
+                <input asp-for="IbuLuasTanahDiwariskan" class="form-control" />
+                <span asp-validation-for="IbuLuasTanahDiwariskan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuTahunDiwariskan" class="control-label"></label>
+                <input asp-for="IbuTahunDiwariskan" class="form-control" />
+                <span asp-validation-for="IbuTahunDiwariskan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuBentukLegalitas" class="control-label"></label>
+                <input asp-for="IbuBentukLegalitas" class="form-control" />
+                <span asp-validation-for="IbuBentukLegalitas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuLokasiLahan" class="control-label"></label>
+                <input asp-for="IbuLokasiLahan" class="form-control" />
+                <span asp-validation-for="IbuLokasiLahan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuFungsiLahanSebelum" class="control-label"></label>
+                <select asp-for="IbuFungsiLahanSebelum" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="IbuFungsiLahanSebelum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuFungsiLahanSesudah" class="control-label"></label>
+                <select asp-for="IbuFungsiLahanSesudah" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="IbuFungsiLahanSesudah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuHasilUsahaTani" class="control-label"></label>
+                <select asp-for="IbuHasilUsahaTani" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="IbuHasilUsahaTani" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuTanahWarisanSubur" class="control-label"></label>
+                <select asp-for="IbuTanahWarisanSubur" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="IbuTanahWarisanSubur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuTenagaYangMengelola" class="control-label"></label>
+                <select asp-for="IbuTenagaYangMengelola" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="IbuTenagaYangMengelola" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuAnggotaKeluargaYangBekerja" class="control-label"></label>
+                <input asp-for="IbuAnggotaKeluargaYangBekerja" class="form-control" />
+                <span asp-validation-for="IbuAnggotaKeluargaYangBekerja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuStrukturArt" class="control-label"></label>
+                <input asp-for="IbuStrukturArt" class="form-control" />
+                <span asp-validation-for="IbuStrukturArt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuJumlahBuruh" class="control-label"></label>
+                <input asp-for="IbuJumlahBuruh" class="form-control" />
+                <span asp-validation-for="IbuJumlahBuruh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuAsalBuruh" class="control-label"></label>
+                <select asp-for="IbuAsalBuruh" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="IbuAsalBuruh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuMengalihkanTanah" class="control-label"></label>
+                <input asp-for="IbuMengalihkanTanah" class="form-control" />
+                <span asp-validation-for="IbuMengalihkanTanah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuTahunMengalihkan" class="control-label"></label>
+                <input asp-for="IbuTahunMengalihkan" class="form-control" />
+                <span asp-validation-for="IbuTahunMengalihkan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuTransaksiPengalihanPemilikan" class="control-label"></label>
+                <select asp-for="IbuTransaksiPengalihanPemilikan" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="IbuTransaksiPengalihanPemilikan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuKepadaSiapaPengalihan" class="control-label"></label>
+                <select asp-for="IbuKepadaSiapaPengalihan" class="form-control">
+                    <option>-- Select --</option>
+                    <option value="1">Keluarga</option>
+                    <option value="2">Warga/Tetangga</option>
+                    <option value="3">Pihak luar desa ini</option>
+                </select>
+                <span asp-validation-for="IbuKepadaSiapaPengalihan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IbuAlasanMengalihkan" class="control-label"></label>
+                <select asp-for="IbuAlasanMengalihkan" class="form-control" asp-items="ViewBag.Provinsi">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="IbuAlasanMengalihkan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Next" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.TanahWarisID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,721 @@
+﻿@model AgrariaSurvey.Models.RiwayatBermukim
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<div class="row">
+    <div class="col-lg-6">
+        <h4>RIWAYAT BERMUKIM</h4>
+    </div>
+    <div class="col-lg-6">
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#petunjukModal">Petunjuk</button>
+    </div>
+</div>
+
+<div id="petunjukModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Petunjuk</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>Bagian D</strong> merupakan riwayat asal usul kedatangan Kepala Keluarga ke Desa Ini.  Penelusuran dilakukan dengan melacak kedua orangtua dari pasangan suami-istri tersebut dalam kaitannya dengan sejarah berdomisili di Desa penelitian ini.
+                </p>
+                <p>
+                    Penelusuran dilakukan terhadap orangtua dari pihak suami dan orangtua dari pihak istri.
+                </p>
+                <p>
+                    Jika rumahtangga terdiri lebih dari satu keluarga, maka data yang diambil adalah keluarga (suami dan istri) dari pihak Kepala Keluarga dan/atau berdasarkan Kepala keluarga sebagaimana Kartu Keluarga (KK) yang didaftarkan dalam <strong>Formulir C1</strong>
+                </p>
+                <h5>Output</h5>
+                <p>
+                    Riwayat bermukim rumahtangga, berapa lama tinggal di Desa Ini, identifikasi migrasi dan latar belakangnya, serta keterangan keaslian penduduk di Desa penelitian Ini.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Got It</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RiwayatBermukimID" />
+            <input type="hidden" asp-for="RespondenID" value="@ViewBag.RespondenID" />
+            <div class="form-group">
+                <label asp-for="TempatLahirAyahDariSuami" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariSuami" class="form-control" onchange="showTempatLahirAyahDariSuami()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Desa Ini</option>
+                    <option value="2">Luar Desa Ini</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariSuami" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariSuamiProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariSuamiProv" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariSuamiProv" class="form-control" asp-items="ViewBag.TempatLahirAyahDariSuamiProv">
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariSuamiProv" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariSuamiKota" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariSuamiKota" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariSuamiKota" class="form-control">
+                    <option value="">-- Select Provinsi --</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariSuamiKota" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariSuamiKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariSuamiKec" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariSuamiKec" class="form-control">
+                    <option value="">-- Select Kabupaten/Kota --</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariSuamiKec" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariSuamiDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariSuamiDesa" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariSuamiDesa" class="form-control">
+                    <option value="">-- Select Kecamatan --</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariSuamiDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EtnisAyahDariSuami" class="control-label"></label>
+                <select asp-for="EtnisAyahDariSuami" class="form-control" asp-items="ViewBag.EtnisAyahDariSuami"></select>
+                <span asp-validation-for="EtnisAyahDariSuami" class="text-danger"></span>
+            </div>
+            <h5>Jika Ayah dari suami bukan berasal dari Desa domisili saat Ini, maka:</h5>
+            <div class="form-group">
+                <label asp-for="TahunKedatanganAyahDariSuamiKeDesa" class="control-label"></label>
+                <input asp-for="TahunKedatanganAyahDariSuamiKeDesa" class="form-control" />
+                <span asp-validation-for="TahunKedatanganAyahDariSuamiKeDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanAyahDariSuamiDatangKeDesaIni" class="control-label"></label>
+                <select asp-for="AlasanAyahDariSuamiDatangKeDesaIni" class="form-control" onchange="showAlasanAyahDariSuamiDatangKeDesaIniLainnya()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Ikut orangtua (sesuai dengan tempat tinggal orangtua)</option>
+                    <option value="2">Mencari nafkah</option>
+                    <option value="3">Menikah</option>
+                    <option value="4">Lainnya</option>
+                </select>
+                <span asp-validation-for="AlasanAyahDariSuamiDatangKeDesaIni" class="text-danger"></span>
+            </div>
+            <div id="AlasanAyahDariSuamiDatangKeDesaIniLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AlasanAyahDariSuamiDatangKeDesaIniLainnya" class="control-label"></label>
+                <input asp-for="AlasanAyahDariSuamiDatangKeDesaIniLainnya" class="form-control" />
+                <span asp-validation-for="AlasanAyahDariSuamiDatangKeDesaIniLainnya" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <label asp-for="TempatLahirIbuDariSuami" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariSuami" class="form-control" onchange="showTempatLahirIbuDariSuami()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Desa Ini</option>
+                    <option value="2">Luar Desa Ini</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariSuami" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariSuamiProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariSuamiProv" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariSuamiProv" class="form-control" asp-items="ViewBag.TempatLahirIbuDariSuamiProv">
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariSuamiProv" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariSuamiKota" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariSuamiKota" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariSuamiKota" class="form-control">
+                    <option value="">-- Select Provinsi --</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariSuamiKota" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariSuamiKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariSuamiKec" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariSuamiKec" class="form-control">
+                    <option value="">-- Select Kabupaten/Kota --</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariSuamiKec" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariSuamiDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariSuamiDesa" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariSuamiDesa" class="form-control">
+                    <option value="">-- Select Kecamatan --</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariSuamiDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EtnisIbuDariSuami" class="control-label"></label>
+                <select asp-for="EtnisIbuDariSuami" class="form-control" asp-items="ViewBag.EtnisIbuDariSuami"></select>
+                <span asp-validation-for="EtnisIbuDariSuami" class="text-danger"></span>
+            </div>
+            <h5>Jika Ibu dari suami bukan berasal dari Desa domisili saat Ini, maka:</h5>
+            <div class="form-group">
+                <label asp-for="TahunKedatanganIbuDariSuamiKeDesa" class="control-label"></label>
+                <input asp-for="TahunKedatanganIbuDariSuamiKeDesa" class="form-control" />
+                <span asp-validation-for="TahunKedatanganIbuDariSuamiKeDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanIbuDariSuamiDatangKeDesaIni" class="control-label"></label>
+                <select asp-for="AlasanIbuDariSuamiDatangKeDesaIni" class="form-control" onchange="showAlasanIbuDariSuamiDatangKeDesaIniLainnya()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Ikut orangtua (sesuai dengan tempat tinggal orangtua)</option>
+                    <option value="2">Mencari nafkah</option>
+                    <option value="3">Menikah</option>
+                    <option value="4">Lainnya</option>
+                </select>
+                <span asp-validation-for="AlasanIbuDariSuamiDatangKeDesaIni" class="text-danger"></span>
+            </div>
+            <div id="AlasanIbuDariSuamiDatangKeDesaIniLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AlasanIbuDariSuamiDatangKeDesaIniLainnya" class="control-label"></label>
+                <input asp-for="AlasanIbuDariSuamiDatangKeDesaIniLainnya" class="form-control" />
+                <span asp-validation-for="AlasanIbuDariSuamiDatangKeDesaIniLainnya" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <label asp-for="TempatLahirAyahDariIstri" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariIstri" class="form-control" onchange="showTempatLahirAyahDariIstri()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Desa Ini</option>
+                    <option value="2">Luar Desa Ini</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariIstri" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariIstriProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariIstriProv" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariIstriProv" class="form-control" asp-items="ViewBag.TempatLahirAyahDariIstriProv">
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariIstriProv" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariIstriKota" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariIstriKota" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariIstriKota" class="form-control">
+                    <option value="">-- Select Provinsi --</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariIstriKota" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariIstriKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariIstriKec" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariIstriKec" class="form-control">
+                    <option value="">-- Select Kabupaten/Kota --</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariIstriKec" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirAyahDariIstriDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirAyahDariIstriDesa" class="control-label"></label>
+                <select asp-for="TempatLahirAyahDariIstriDesa" class="form-control">
+                    <option value="">-- Select Kecamatan --</option>
+                </select>
+                <span asp-validation-for="TempatLahirAyahDariIstriDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EtnisAyahDariIstri" class="control-label"></label>
+                <select asp-for="EtnisAyahDariIstri" class="form-control" asp-items="ViewBag.EtnisAyahDariIstri"></select>
+                <span asp-validation-for="EtnisAyahDariIstri" class="text-danger"></span>
+            </div>
+            <h5>Jika Ayah dari istri bukan berasal dari Desa domisili saat Ini, maka:</h5>
+            <div class="form-group">
+                <label asp-for="TahunKedatanganAyahDariIstriKeDesa" class="control-label"></label>
+                <input asp-for="TahunKedatanganAyahDariIstriKeDesa" class="form-control" />
+                <span asp-validation-for="TahunKedatanganAyahDariIstriKeDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanAyahDariIstriDatangKeDesaIni" class="control-label"></label>
+                <select asp-for="AlasanAyahDariIstriDatangKeDesaIni" class="form-control" onchange="showAlasanAyahDariIstriDatangKeDesaIniLainnya()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Ikut orangtua (sesuai dengan tempat tinggal orangtua)</option>
+                    <option value="2">Mencari nafkah</option>
+                    <option value="3">Menikah</option>
+                    <option value="4">Lainnya</option>
+                </select>
+                <span asp-validation-for="AlasanAyahDariIstriDatangKeDesaIni" class="text-danger"></span>
+            </div>
+            <div id="AlasanAyahDariIstriDatangKeDesaIniLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AlasanAyahDariIstriDatangKeDesaIniLainnya" class="control-label"></label>
+                <input asp-for="AlasanAyahDariIstriDatangKeDesaIniLainnya" class="form-control" />
+                <span asp-validation-for="AlasanAyahDariIstriDatangKeDesaIniLainnya" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <label asp-for="TempatLahirIbuDariIstri" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariIstri" class="form-control" onchange="showTempatLahirIbuDariIstri()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Desa Ini</option>
+                    <option value="2">Luar Desa Ini</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariIstri" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariIstriProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariIstriProv" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariIstriProv" class="form-control" asp-items="ViewBag.TempatLahirIbuDariIstriProv">
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariIstriProv" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariIstriKota" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariIstriKota" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariIstriKota" class="form-control">
+                    <option value="">-- Select Provinsi --</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariIstriKota" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariIstriKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariIstriKec" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariIstriKec" class="form-control">
+                    <option value="">-- Select Kabupaten/Kota --</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariIstriKec" class="text-danger"></span>
+            </div>
+            <div id="divTempatLahirIbuDariIstriDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirIbuDariIstriDesa" class="control-label"></label>
+                <select asp-for="TempatLahirIbuDariIstriDesa" class="form-control">
+                    <option value="">-- Select Kecamatan --</option>
+                </select>
+                <span asp-validation-for="TempatLahirIbuDariIstriDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EtnisIbuDariIstri" class="control-label"></label>
+                <select asp-for="EtnisIbuDariIstri" class="form-control" asp-items="ViewBag.EtnisIbuDariIstri"></select>
+                <span asp-validation-for="EtnisIbuDariIstri" class="text-danger"></span>
+            </div>
+            <h5>Jika Ibu dari istri bukan berasal dari Desa domisili saat Ini, maka:</h5>
+            <div class="form-group">
+                <label asp-for="TahunKedatanganIbuDariIstriKeDesa" class="control-label"></label>
+                <input asp-for="TahunKedatanganIbuDariIstriKeDesa" class="form-control" />
+                <span asp-validation-for="TahunKedatanganIbuDariIstriKeDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanIbuDariIstriDatangKeDesaIni" class="control-label"></label>
+                <select asp-for="AlasanIbuDariIstriDatangKeDesaIni" class="form-control" onchange="showAlasanIbuDariIstriDatangKeDesaIniLainnya()">
+                    <option value="0">-- Select --</option>
+                    <option value="1">Ikut orangtua (sesuai dengan tempat tinggal orangtua)</option>
+                    <option value="2">Mencari nafkah</option>
+                    <option value="3">Menikah</option>
+                    <option value="4">Lainnya</option>
+                </select>
+                <span asp-validation-for="AlasanIbuDariIstriDatangKeDesaIni" class="text-danger"></span>
+            </div>
+            <div id="AlasanIbuDariIstriDatangKeDesaIniLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AlasanIbuDariIstriDatangKeDesaIniLainnya" class="control-label"></label>
+                <input asp-for="AlasanIbuDariIstriDatangKeDesaIniLainnya" class="form-control" />
+                <span asp-validation-for="AlasanIbuDariIstriDatangKeDesaIniLainnya" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save & Next" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+<div>
+    <a asp-controller="Respondens" asp-action="Index">Back to List</a>
+</div>
+
+<script type="text/javascript">
+    function showTempatLahirAyahDariSuami() {
+        if ($('#TempatLahirAyahDariSuami').val() == '2') {
+            $('#divTempatLahirAyahDariSuamiProv').css({ 'visibility': 'visible' });
+            $('#divTempatLahirAyahDariSuamiProv').css({ 'display': 'contents' });
+            $('#divTempatLahirAyahDariSuamiKota').css({ 'visibility': 'visible' });
+            $('#divTempatLahirAyahDariSuamiKota').css({ 'display': 'contents' });
+            $('#divTempatLahirAyahDariSuamiKec').css({ 'visibility': 'visible' });
+            $('#divTempatLahirAyahDariSuamiKec').css({ 'display': 'contents' });
+            $('#divTempatLahirAyahDariSuamiDesa').css({ 'visibility': 'visible' });
+            $('#divTempatLahirAyahDariSuamiDesa').css({ 'display': 'contents' });
+        }
+        else {
+            $('#divTempatLahirAyahDariSuamiProv').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirAyahDariSuamiProv').css({ 'display': 'none' });
+            $('#divTempatLahirAyahDariSuamiKota').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirAyahDariSuamiKota').css({ 'display': 'none' });
+            $('#divTempatLahirAyahDariSuamiKec').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirAyahDariSuamiKec').css({ 'display': 'none' });
+            $('#divTempatLahirAyahDariSuamiDesa').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirAyahDariSuamiDesa').css({ 'display': 'none' });
+        }
+    }
+
+    function showAlasanAyahDariSuamiDatangKeDesaIniLainnya() {
+        if ($('#AlasanAyahDariSuamiDatangKeDesaIni').val() == '4') {
+            $('#AlasanAyahDariSuamiDatangKeDesaIniLainnya').css({ 'visibility': 'visible' });
+            $('#AlasanAyahDariSuamiDatangKeDesaIniLainnya').css({ 'display': 'contents' });
+        }
+        else {
+            $('#AlasanAyahDariSuamiDatangKeDesaIniLainnya').css({ 'visibility': 'hidden' });
+            $('#AlasanAyahDariSuamiDatangKeDesaIniLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    function showTempatLahirIbuDariSuami() {
+        if ($('#TempatLahirIbuDariSuami').val() == '2') {
+            $('#divTempatLahirIbuDariSuamiProv').css({ 'visibility': 'visible' });
+            $('#divTempatLahirIbuDariSuamiProv').css({ 'display': 'contents' });
+            $('#divTempatLahirIbuDariSuamiKota').css({ 'visibility': 'visible' });
+            $('#divTempatLahirIbuDariSuamiKota').css({ 'display': 'contents' });
+            $('#divTempatLahirIbuDariSuamiKec').css({ 'visibility': 'visible' });
+            $('#divTempatLahirIbuDariSuamiKec').css({ 'display': 'contents' });
+            $('#divTempatLahirIbuDariSuamiDesa').css({ 'visibility': 'visible' });
+            $('#divTempatLahirIbuDariSuamiDesa').css({ 'display': 'contents' });
+        }
+        else {
+            $('#divTempatLahirIbuDariSuamiProv').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirIbuDariSuamiProv').css({ 'display': 'none' });
+            $('#divTempatLahirIbuDariSuamiKota').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirIbuDariSuamiKota').css({ 'display': 'none' });
+            $('#divTempatLahirIbuDariSuamiKec').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirIbuDariSuamiKec').css({ 'display': 'none' });
+            $('#divTempatLahirIbuDariSuamiDesa').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirIbuDariSuamiDesa').css({ 'display': 'none' });
+        }
+    }
+
+    function showAlasanIbuDariSuamiDatangKeDesaIniLainnya() {
+        if ($('#AlasanIbuDariSuamiDatangKeDesaIni').val() == '4') {
+            $('#AlasanIbuDariSuamiDatangKeDesaIniLainnya').css({ 'visibility': 'visible' });
+            $('#AlasanIbuDariSuamiDatangKeDesaIniLainnya').css({ 'display': 'contents' });
+        }
+        else {
+            $('#AlasanIbuDariSuamiDatangKeDesaIniLainnya').css({ 'visibility': 'hidden' });
+            $('#AlasanIbuDariSuamiDatangKeDesaIniLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    function showTempatLahirAyahDariIstri() {
+        if ($('#TempatLahirAyahDariIstri').val() == '2') {
+            $('#divTempatLahirAyahDariIstriProv').css({ 'visibility': 'visible' });
+            $('#divTempatLahirAyahDariIstriProv').css({ 'display': 'contents' });
+            $('#divTempatLahirAyahDariIstriKota').css({ 'visibility': 'visible' });
+            $('#divTempatLahirAyahDariIstriKota').css({ 'display': 'contents' });
+            $('#divTempatLahirAyahDariIstriKec').css({ 'visibility': 'visible' });
+            $('#divTempatLahirAyahDariIstriKec').css({ 'display': 'contents' });
+            $('#divTempatLahirAyahDariIstriDesa').css({ 'visibility': 'visible' });
+            $('#divTempatLahirAyahDariIstriDesa').css({ 'display': 'contents' });
+        }
+        else {
+            $('#divTempatLahirAyahDariIstriProv').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirAyahDariIstriProv').css({ 'display': 'none' });
+            $('#divTempatLahirAyahDariIstriKota').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirAyahDariIstriKota').css({ 'display': 'none' });
+            $('#divTempatLahirAyahDariIstriKec').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirAyahDariIstriKec').css({ 'display': 'none' });
+            $('#divTempatLahirAyahDariIstriDesa').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirAyahDariIstriDesa').css({ 'display': 'none' });
+        }
+    }
+
+    function showAlasanAyahDariIstriDatangKeDesaIniLainnya() {
+        if ($('#AlasanAyahDariIstriDatangKeDesaIni').val() == '4') {
+            $('#AlasanAyahDariIstriDatangKeDesaIniLainnya').css({ 'visibility': 'visible' });
+            $('#AlasanAyahDariIstriDatangKeDesaIniLainnya').css({ 'display': 'contents' });
+        }
+        else {
+            $('#AlasanAyahDariIstriDatangKeDesaIniLainnya').css({ 'visibility': 'hidden' });
+            $('#AlasanAyahDariIstriDatangKeDesaIniLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    function showTempatLahirIbuDariIstri() {
+        if ($('#TempatLahirIbuDariIstri').val() == '2') {
+            $('#divTempatLahirIbuDariIstriProv').css({ 'visibility': 'visible' });
+            $('#divTempatLahirIbuDariIstriProv').css({ 'display': 'contents' });
+            $('#divTempatLahirIbuDariIstriKota').css({ 'visibility': 'visible' });
+            $('#divTempatLahirIbuDariIstriKota').css({ 'display': 'contents' });
+            $('#divTempatLahirIbuDariIstriKec').css({ 'visibility': 'visible' });
+            $('#divTempatLahirIbuDariIstriKec').css({ 'display': 'contents' });
+            $('#divTempatLahirIbuDariIstriDesa').css({ 'visibility': 'visible' });
+            $('#divTempatLahirIbuDariIstriDesa').css({ 'display': 'contents' });
+        }
+        else {
+            $('#divTempatLahirIbuDariIstriProv').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirIbuDariIstriProv').css({ 'display': 'none' });
+            $('#divTempatLahirIbuDariIstriKota').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirIbuDariIstriKota').css({ 'display': 'none' });
+            $('#divTempatLahirIbuDariIstriKec').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirIbuDariIstriKec').css({ 'display': 'none' });
+            $('#divTempatLahirIbuDariIstriDesa').css({ 'visibility': 'hidden' });
+            $('#divTempatLahirIbuDariIstriDesa').css({ 'display': 'none' });
+        }
+    }
+
+    function showAlasanIbuDariIstriDatangKeDesaIniLainnya() {
+        if ($('#AlasanIbuDariIstriDatangKeDesaIni').val() == '4') {
+            $('#AlasanIbuDariIstriDatangKeDesaIniLainnya').css({ 'visibility': 'visible' });
+            $('#AlasanIbuDariIstriDatangKeDesaIniLainnya').css({ 'display': 'contents' });
+        }
+        else {
+            $('#AlasanIbuDariIstriDatangKeDesaIniLainnya').css({ 'visibility': 'hidden' });
+            $('#AlasanIbuDariIstriDatangKeDesaIniLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    //Bind Kota/Kabupaten
+    $("#TempatLahirAyahDariSuamiProv").change(function () {
+        var prov = $("#TempatLahirAyahDariSuamiProv").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetKota")',
+            data: {
+                prov: prov
+            },
+            success: function (data) {
+
+                var item = "<option value=/"/">-- Select --</option>";
+                $("#TempatLahirAyahDariSuamiKota").empty();
+                $.each(data, function (i, kota) {
+                    item += '<option value="' + kota.value + '">' + kota.text + '</option>'
+                });
+                $("#TempatLahirAyahDariSuamiKota").html(item);
+                $("#TempatLahirAyahDariSuamiKec").html("<option value=/"/">-- Select Kabupaten/Kota --</option>");
+                $("#TempatLahirAyahDariSuamiKotaDesa").html("<option value=/"/">-- Select Kecamatan --</option>");
+            }
+        });
+    })
+
+    $("#TempatLahirIbuDariSuamiProv").change(function () {
+        var prov = $("#TempatLahirIbuDariSuamiProv").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetKota")',
+            data: {
+                prov: prov
+            },
+            success: function (data) {
+
+                var item = "<option value=/"/">-- Select --</option>";
+                $("#TempatLahirIbuDariSuamiKota").empty();
+                $.each(data, function (i, kota) {
+                    item += '<option value="' + kota.value + '">' + kota.text + '</option>'
+                });
+                $("#TempatLahirIbuDariSuamiKota").html(item);
+                $("#TempatLahirIbuDariSuamiKec").html("<option value=/"/">-- Select Kabupaten/Kota --</option>");
+                $("#TempatLahirIbuDariSuamiDesa").html("<option value=/"/">-- Select Kecamatan --</option>");
+            }
+        });
+    })
+
+    $("#TempatLahirAyahDariIstriProv").change(function () {
+        var prov = $("#TempatLahirAyahDariIstriProv").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetKota")',
+            data: {
+                prov: prov
+            },
+            success: function (data) {
+
+                var item = "<option value=/"/">-- Select --</option>";
+                $("#TempatLahirAyahDariIstriKota").empty();
+                $.each(data, function (i, kota) {
+                    item += '<option value="' + kota.value + '">' + kota.text + '</option>'
+                });
+                $("#TempatLahirAyahDariIstriKota").html(item);
+                $("#TempatLahirAyahDariIstriKec").html("<option value=/"/">-- Select Kabupaten/Kota --</option>");
+                $("#TempatLahirAyahDariIstriDesa").html("<option value=/"/">-- Select Kecamatan --</option>");
+            }
+        });
+    })
+
+    $("#TempatLahirIbuDariIstriProv").change(function () {
+        var prov = $("#TempatLahirIbuDariIstriProv").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetKota")',
+            data: {
+                prov: prov
+            },
+            success: function (data) {
+
+                var item = "<option value=/"/">-- Select --</option>";
+                $("#TempatLahirIbuDariIstriKota").empty();
+                $.each(data, function (i, kota) {
+                    item += '<option value="' + kota.value + '">' + kota.text + '</option>'
+                });
+                $("#TempatLahirIbuDariIstriKota").html(item);
+                $("#TempatLahirIbuDariIstriKec").html("<option value=/"/">-- Select Kabupaten/Kota --</option>");
+                $("#TempatLahirIbuDariIstriDesa").html("<option value=/"/">-- Select Kecamatan --</option>");
+            }
+        });
+    })
+
+    //Bind Kecamatan
+    $("#TempatLahirAyahDariSuamiKota").change(function () {
+        var kota = $("#TempatLahirAyahDariSuamiKota").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetKecamatan")',
+            data: {
+                kota: kota
+            },
+            success: function (data) {
+
+                var item = "<option value=/"/">-- Select --</option>";
+                $("#TempatLahirAyahDariSuamiKec").empty();
+                $.each(data, function (i, kec) {
+                    item += '<option value="' + kec.value + '">' + kec.text + '</option>'
+                });
+                $("#TempatLahirAyahDariSuamiKec").html(item);
+                $("#TempatLahirAyahDariSuamiDesa").html("<option value=/"/">-- Select Kecamatan --</option>");
+            }
+        });
+    })
+
+    $("#TempatLahirIbuDariSuamiKota").change(function () {
+        var kota = $("#TempatLahirIbuDariSuamiKota").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetKecamatan")',
+            data: {
+                kota: kota
+            },
+            success: function (data) {
+
+                var item = "<option value=/"/">-- Select --</option>";
+                $("#TempatLahirIbuDariSuamiKec").empty();
+                $.each(data, function (i, kec) {
+                    item += '<option value="' + kec.value + '">' + kec.text + '</option>'
+                });
+                $("#TempatLahirIbuDariSuamiKec").html(item);
+                $("#TempatLahirIbuDariSuamiDesa").html("<option value=/"/">-- Select Kecamatan --</option>");
+            }
+        });
+    })
+
+    $("#TempatLahirAyahDariIstriKota").change(function () {
+        var kota = $("#TempatLahirAyahDariIstriKota").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetKecamatan")',
+            data: {
+                kota: kota
+            },
+            success: function (data) {
+
+                var item = "<option value=/"/">-- Select --</option>";
+                $("#TempatLahirAyahDariIstriKec").empty();
+                $.each(data, function (i, kec) {
+                    item += '<option value="' + kec.value + '">' + kec.text + '</option>'
+                });
+                $("#TempatLahirAyahDariIstriKec").html(item);
+                $("#TempatLahirAyahDariIstriDesa").html("<option value=/"/">-- Select Kecamatan --</option>");
+            }
+        });
+    })
+
+    $("#TempatLahirIbuDariIstriKota").change(function () {
+        var kota = $("#TempatLahirIbuDariIstriKota").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetKecamatan")',
+            data: {
+                kota: kota
+            },
+            success: function (data) {
+
+                var item = "<option value=/"/">-- Select --</option>";
+                $("#TempatLahirIbuDariIstriKec").empty();
+                $.each(data, function (i, kec) {
+                    item += '<option value="' + kec.value + '">' + kec.text + '</option>'
+                });
+                $("#TempatLahirIbuDariIstriKec").html(item);
+                $("#TempatLahirIbuDariIstriDesa").html("<option value=/"/">-- Select Kecamatan --</option>");
+            }
+        });
+    })
+
+    //Bind Desa
+    $("#TempatLahirAyahDariSuamiKec").change(function () {
+        var kec = $("#TempatLahirAyahDariSuamiKec").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetDesa")',
+            data: {
+                kec: kec
+            },
+            success: function (data) {
+
+                var item = "<option value=/"/">-- Select --</option>";
+                $("#TempatLahirAyahDariSuamiDesa").empty();
+                $.each(data, function (i, desa) {
+                    item += '<option value="' + desa.value + '">' + desa.text + '</option>'
+                });
+                $("#TempatLahirAyahDariSuamiDesa").html(item);
+            }
+        });
+    })
+
+    $("#TempatLahirIbuDariSuamiKec").change(function () {
+        var kec = $("#TempatLahirIbuDariSuamiKec").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetDesa")',
+            data: {
+                kec: kec
+            },
+            success: function (data) {
+
+                var item = "<option value=/"/">-- Select --</option>";
+                $("#TempatLahirIbuDariSuamiDesa").empty();
+                $.each(data, function (i, desa) {
+                    item += '<option value="' + desa.value + '">' + desa.text + '</option>'
+                });
+                $("#TempatLahirIbuDariSuamiDesa").html(item);
+            }
+        });
+    })
+
+    $("#TempatLahirAyahDariIstriKec").change(function () {
+        var kec = $("#TempatLahirAyahDariIstriKec").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetDesa")',
+            data: {
+                kec: kec
+            },
+            success: function (data) {
+
+                var item = "<option value=/"/">-- Select --</option>";
+                $("#TempatLahirAyahDariIstriDesa").empty();
+                $.each(data, function (i, desa) {
+                    item += '<option value="' + desa.value + '">' + desa.text + '</option>'
+                });
+                $("#TempatLahirAyahDariIstriDesa").html(item);
+            }
+        });
+    })
+
+    $("#TempatLahirIbuDariIstriKec").change(function () {
+        var kec = $("#TempatLahirIbuDariIstriKec").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetDesa")',
+            data: {
+                kec: kec
+            },
+            success: function (data) {
+
+                var item = "<option value=/"/">-- Select --</option>";
+                $("#TempatLahirIbuDariIstriDesa").empty();
+                $.each(data, function (i, desa) {
+                    item += '<option value="' + desa.value + '">' + desa.text + '</option>'
+                });
+                $("#TempatLahirIbuDariIstriDesa").html(item);
+            }
+        });
+    })
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

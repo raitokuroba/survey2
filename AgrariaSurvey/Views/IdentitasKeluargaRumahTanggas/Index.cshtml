@@ -1,0 +1,95 @@
+﻿@model IEnumerable<AgrariaSurvey.Models.IdentitasKeluargaRumahTangga>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NoKK)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FotoKK)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NamaKepalaKeluarga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JenisKelaminKepalaKeluarga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JumlahAnggotaRumahTangga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JumlahKeluargaDalamRumahTangga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NamaTulangPunggungRumahTangga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JenisKelaminTulangPunggungRumahTangga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusTulangPunggungRumahTanggaDalamKeluarga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApakahTulangPunggungKeluargaTinggalMenetapDiRumahResponden)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Responden)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoKK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FotoKK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamaKepalaKeluarga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JenisKelaminKepalaKeluarga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JumlahAnggotaRumahTangga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JumlahKeluargaDalamRumahTangga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamaTulangPunggungRumahTangga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JenisKelaminTulangPunggungRumahTangga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusTulangPunggungRumahTanggaDalamKeluarga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApakahTulangPunggungKeluargaTinggalMenetapDiRumahResponden)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Responden.DesaKelurahan)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdentitasKeluargaRumahTanggaID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdentitasKeluargaRumahTanggaID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdentitasKeluargaRumahTanggaID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

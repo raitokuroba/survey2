@@ -1,0 +1,189 @@
+﻿@model AgrariaSurvey.Models.BagiHasil
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>BagiHasil</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BagiHasilId" />
+            <div class="form-group">
+                <label asp-for="RespondenId" class="control-label"></label>
+                <input asp-for="RespondenId" class="form-control" />
+                <span asp-validation-for="RespondenId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BagiHasilMilik" class="control-label"></label>
+                <input asp-for="BagiHasilMilik" class="form-control" />
+                <span asp-validation-for="BagiHasilMilik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KepadaSiapaPengelolaan" class="control-label"></label>
+                <input asp-for="KepadaSiapaPengelolaan" class="form-control" />
+                <span asp-validation-for="KepadaSiapaPengelolaan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanBagiHasil" class="control-label"></label>
+                <input asp-for="AlasanBagiHasil" class="form-control" />
+                <span asp-validation-for="AlasanBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LuasBagiHasil" class="control-label"></label>
+                <input asp-for="LuasBagiHasil" class="form-control" />
+                <span asp-validation-for="LuasBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KomposisiBagiHasil" class="control-label"></label>
+                <input asp-for="KomposisiBagiHasil" class="form-control" />
+                <span asp-validation-for="KomposisiBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LokasiBagiHasil" class="control-label"></label>
+                <input asp-for="LokasiBagiHasil" class="form-control" />
+                <span asp-validation-for="LokasiBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TahunBagiHasil" class="control-label"></label>
+                <input asp-for="TahunBagiHasil" class="form-control" />
+                <span asp-validation-for="TahunBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TahunKontrakBagiHasil" class="control-label"></label>
+                <input asp-for="TahunKontrakBagiHasil" class="form-control" />
+                <span asp-validation-for="TahunKontrakBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BentukLegalitasBagiHasil" class="control-label"></label>
+                <input asp-for="BentukLegalitasBagiHasil" class="form-control" />
+                <span asp-validation-for="BentukLegalitasBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsahaBagiHasil" class="control-label"></label>
+                <input asp-for="UsahaBagiHasil" class="form-control" />
+                <span asp-validation-for="UsahaBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TanahBagiHasilSubur" class="control-label"></label>
+                <input asp-for="TanahBagiHasilSubur" class="form-control" />
+                <span asp-validation-for="TanahBagiHasilSubur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HasilUsahaBagiHasil" class="control-label"></label>
+                <input asp-for="HasilUsahaBagiHasil" class="form-control" />
+                <span asp-validation-for="HasilUsahaBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenagaMengelolaBagiHasil" class="control-label"></label>
+                <input asp-for="TenagaMengelolaBagiHasil" class="form-control" />
+                <span asp-validation-for="TenagaMengelolaBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JumlahAnggotaBagiHasil" class="control-label"></label>
+                <input asp-for="JumlahAnggotaBagiHasil" class="form-control" />
+                <span asp-validation-for="JumlahAnggotaBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JumlahBuruhTaniBagiHasil" class="control-label"></label>
+                <input asp-for="JumlahBuruhTaniBagiHasil" class="form-control" />
+                <span asp-validation-for="JumlahBuruhTaniBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AsalBuruhTaniBagiHasil" class="control-label"></label>
+                <input asp-for="AsalBuruhTaniBagiHasil" class="form-control" />
+                <span asp-validation-for="AsalBuruhTaniBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BagiHasilKelola" class="control-label"></label>
+                <input asp-for="BagiHasilKelola" class="form-control" />
+                <span asp-validation-for="BagiHasilKelola" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KepadaSiapaBagiHasil" class="control-label"></label>
+                <input asp-for="KepadaSiapaBagiHasil" class="form-control" />
+                <span asp-validation-for="KepadaSiapaBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LuasTanahBagiHasil" class="control-label"></label>
+                <input asp-for="LuasTanahBagiHasil" class="form-control" />
+                <span asp-validation-for="LuasTanahBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LokasiTanahBagiHasil" class="control-label"></label>
+                <input asp-for="LokasiTanahBagiHasil" class="form-control" />
+                <span asp-validation-for="LokasiTanahBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LegalitasBagiHasil" class="control-label"></label>
+                <input asp-for="LegalitasBagiHasil" class="form-control" />
+                <span asp-validation-for="LegalitasBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanMenggarapBagiHasil" class="control-label"></label>
+                <input asp-for="AlasanMenggarapBagiHasil" class="form-control" />
+                <span asp-validation-for="AlasanMenggarapBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsahakanBagiHasil" class="control-label"></label>
+                <input asp-for="UsahakanBagiHasil" class="form-control" />
+                <span asp-validation-for="UsahakanBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KomposisiBagi" class="control-label"></label>
+                <input asp-for="KomposisiBagi" class="form-control" />
+                <span asp-validation-for="KomposisiBagi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JangkaWaktuBagiHasil" class="control-label"></label>
+                <input asp-for="JangkaWaktuBagiHasil" class="form-control" />
+                <span asp-validation-for="JangkaWaktuBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TanahBagiSubur" class="control-label"></label>
+                <input asp-for="TanahBagiSubur" class="form-control" />
+                <span asp-validation-for="TanahBagiSubur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsahaTanahBagiHasil" class="control-label"></label>
+                <input asp-for="UsahaTanahBagiHasil" class="form-control" />
+                <span asp-validation-for="UsahaTanahBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenagaKerjaBagiHasil" class="control-label"></label>
+                <input asp-for="TenagaKerjaBagiHasil" class="form-control" />
+                <span asp-validation-for="TenagaKerjaBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnggotaKeluargaBagiHasil" class="control-label"></label>
+                <input asp-for="AnggotaKeluargaBagiHasil" class="form-control" />
+                <span asp-validation-for="AnggotaKeluargaBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuruhTaniBagiHasil" class="control-label"></label>
+                <input asp-for="BuruhTaniBagiHasil" class="form-control" />
+                <span asp-validation-for="BuruhTaniBagiHasil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuruhTaniAsal" class="control-label"></label>
+                <input asp-for="BuruhTaniAsal" class="form-control" />
+                <span asp-validation-for="BuruhTaniAsal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,165 @@
+﻿@model AgrariaSurvey.Models.BeliTanah
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BeliTanah</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RespondenID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RespondenID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DariHasilPembelian)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DariHasilPembelian)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TahunPembelian)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TahunPembelian)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DariSiapaMembeli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DariSiapaMembeli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AlasanPenjualMenjual)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AlasanPenjualMenjual)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CeritakanPenjual)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CeritakanPenjual)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AlasanMembeliLahan)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AlasanMembeliLahan)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CeritakanMembeli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CeritakanMembeli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LuasTanahDibeli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LuasTanahDibeli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LokasiLahanDibeli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LokasiLahanDibeli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BentukLegalitasDibeli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BentukLegalitasDibeli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DiusahakanTanahPembelian)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DiusahakanTanahPembelian)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TanahBeliSubur)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TanahBeliSubur)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HasilUsahaTaniTanah)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HasilUsahaTaniTanah)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TenagaKerjaTanah)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenagaKerjaTanah)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.JumlahAnggotaKeluarga)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.JumlahAnggotaKeluarga)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.JumlahBuruhTani)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.JumlahBuruhTani)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AsalBuruhTani)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AsalBuruhTani)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PernahMenjualTanah)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PernahMenjualTanah)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KepadaSiapaMenjual)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KepadaSiapaMenjual)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TahunMenjualTanah)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TahunMenjualTanah)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LokasiLahanJual)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LokasiLahanJual)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AlasanMenjualTanah)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AlasanMenjualTanah)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CeritakanMenjual)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CeritakanMenjual)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="BeliTanahID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

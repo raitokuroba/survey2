@@ -1,0 +1,316 @@
+﻿@model AgrariaSurvey.Models.AnggotaRumahTangga
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>AnggotaRumahTangga</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NoART)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NoART)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nama)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nama)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HubunganDenganKepalaKeluarga)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HubunganDenganKepalaKeluarga)
+        </dd>
+        @if (@Model.HubunganDenganKepalaKeluarga == "15")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.HubunganDenganKepalaKeluargaLainnya)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.HubunganDenganKepalaKeluargaLainnya)
+            </dd>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JenisKelamin)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JenisKelamin)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Umur)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Umur)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StatusNikah)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StatusNikah)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EtnisSuku)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EtnisSuku)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BahasaSehari)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BahasaSehari)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PendidikanTertinggi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PendidikanTertinggi)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TempatLahir)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TempatLahir)
+        </dd>
+        @if (@Model.TempatLahir == "2")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TempatLahirDesa)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TempatLahirDesa)
+            </dd>
+        }
+        @if (@Model.TempatLahir == "3")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TempatLahirKec)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TempatLahirKec)
+            </dd>
+        }
+        @if (@Model.TempatLahir == "4")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TempatLahirKab)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TempatLahirKab)
+            </dd>
+        }
+        @if (@Model.TempatLahir == "5")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TempatLahirProv)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TempatLahirProv)
+            </dd>
+        }
+        @if (@Model.TempatLahir == "6")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TempatLahirNeg)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TempatLahirNeg)
+            </dd>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TempatTinggalLalu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TempatTinggalLalu)
+        </dd>
+        @if (@Model.TempatTinggalLalu == "2")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TempatTinggalLaluDesa)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TempatTinggalLaluDesa)
+            </dd>
+        }
+        @if (@Model.TempatTinggalLalu == "3")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TempatTinggalLaluKec)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TempatTinggalLaluKec)
+            </dd>
+        }
+        @if (@Model.TempatTinggalLalu == "4")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TempatTinggalLaluKab)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TempatTinggalLaluKab)
+            </dd>
+        }
+        @if (@Model.TempatTinggalLalu == "5")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TempatTinggalLaluProv)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TempatTinggalLaluProv)
+            </dd>
+        }
+        @if (@Model.TempatTinggalLalu == "6")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TempatTinggalLaluNeg)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TempatTinggalLaluNeg)
+            </dd>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PekerjaanUtama)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PekerjaanUtama)
+        </dd>
+        @if (@Model.PekerjaanUtama == "12")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PekerjaanUtamaLainnya)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PekerjaanUtamaLainnya)
+            </dd>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LokasiKerjaUtama)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LokasiKerjaUtama)
+        </dd>
+        @if (@Model.LokasiKerjaUtama == "2")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LokasiKerjaUtamaDesa)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LokasiKerjaUtamaDesa)
+            </dd>
+        }
+        @if (@Model.LokasiKerjaUtama == "3")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LokasiKerjaUtamaKec)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LokasiKerjaUtamaKec)
+            </dd>
+        }
+        @if (@Model.LokasiKerjaUtama == "4")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LokasiKerjaUtamaKab)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LokasiKerjaUtamaKab)
+            </dd>
+        }
+        @if (@Model.LokasiKerjaUtama == "5")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LokasiKerjaUtamaProv)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LokasiKerjaUtamaProv)
+            </dd>
+        }
+        @if (@Model.LokasiKerjaUtama == "6")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LokasiKerjaUtamaNeg)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LokasiKerjaUtamaNeg)
+            </dd>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PekerjaanUSampingan)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PekerjaanUSampingan)
+        </dd>
+        @if (@Model.PekerjaanUSampingan == "12")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PekerjaanSampinganLainnya)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PekerjaanSampinganLainnya)
+            </dd>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LokasiKerjaSamping)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LokasiKerjaSamping)
+        </dd>
+        @if (@Model.LokasiKerjaSamping == "2")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LokasiKerjaSampingDesa)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LokasiKerjaSampingDesa)
+            </dd>
+        }
+        @if (@Model.LokasiKerjaSamping == "3")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LokasiKerjaSampingKec)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LokasiKerjaSampingKec)
+            </dd>
+        }
+        @if (@Model.LokasiKerjaSamping == "4")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LokasiKerjaSampingKab)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LokasiKerjaSampingKab)
+            </dd>
+        }
+        @if (@Model.LokasiKerjaSamping == "5")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LokasiKerjaSampingProv)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LokasiKerjaSampingProv)
+            </dd>
+        }
+        @if (@Model.LokasiKerjaSamping == "6")
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LokasiKerjaSampingNeg)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LokasiKerjaSampingNeg)
+            </dd>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.AnggotaRumahTanggaID">Edit</a> |
+    <a asp-action="Index" asp-route-respondenId="@ViewBag.RespondenID">Back to List</a>
+</div>

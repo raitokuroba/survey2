@@ -1,0 +1,498 @@
+﻿@model AgrariaSurvey.Models.Responden
+
+@{
+    ViewData["Title"] = "RiwayatBermukim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>RiwayatBermukim</h1>
+
+<h4>Responden</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RiwayatBermukim">
+            <h3>Riwayat Bermukim</h3>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RespondenID" value="@ViewBag.RespondenID" />
+            @*<div class="form-group">
+                <label asp-for="TempatSuamiLahir" class="control-label"></label>
+                <select asp-for="TempatSuamiLahir" class="form-control">
+                    <option value="Dusun">Dusun</option>
+                    <option value="Desa">Desa</option>
+                    <option value="Kecamatan">Kecamatan</option>
+                    <option value="Kabupaten">Kabupaten</option>
+                    <option value="Provinsi">Provinsi</option>
+                </select>
+                <span asp-validation-for="TempatSuamiLahir" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TempatIstriLahir" class="control-label"></label>
+                <select asp-for="TempatIstriLahir" class="form-control">
+                    <option value="Dusun">Dusun</option>
+                    <option value="Desa">Desa</option>
+                    <option value="Kecamatan">Kecamatan</option>
+                    <option value="Kabupaten">Kabupaten</option>
+                    <option value="Provinsi">Provinsi</option>
+                </select>
+                <span asp-validation-for="TempatIstriLahir" class="text-danger"></span>
+            </div>
+            <h5>Jika Bapak (suami) bukan berasal dari Desa domisili saat ini, maka:</h5>
+            <div class="form-group">
+                <label asp-for="TahunkedatanganSuamiKeDesa" class="control-label"></label>
+                <input asp-for="TahunkedatanganSuamiKeDesa" class="form-control" />
+                <span asp-validation-for="TahunkedatanganSuamiKeDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanSuamiDatangKeDesa" class="control-label"></label>
+                <select asp-for="AlasanSuamiDatangKeDesa" class="form-control" onchange="showAlasanSuamiDatangKeDesaLainnya()">
+                    <option value="Mencari nafkah">Mencari nafkah</option>
+                    <option value="Menikah">Menikah</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+                <span asp-validation-for="AlasanSuamiDatangKeDesa" class="text-danger"></span>
+            </div>
+            <div id="AlasanSuamiDatangKeDesaLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AlasanSuamiDatangKeDesaLainnya" class="control-label"></label>
+                <input asp-for="AlasanSuamiDatangKeDesaLainnya" class="form-control" />
+                <span asp-validation-for="AlasanSuamiDatangKeDesaLainnya" class="text-danger"></span>
+            </div>
+            <h5>Jika Ibu (istri) bukan berasal dari Desa domisili saat ini, maka:</h5>
+            <div class="form-group">
+                <label asp-for="TahunkedatanganIstriKeDesa" class="control-label"></label>
+                <input asp-for="TahunkedatanganIstriKeDesa" class="form-control" />
+                <span asp-validation-for="TahunkedatanganIstriKeDesa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanIstriDatangKeDesa" class="control-label"></label>
+                <select asp-for="AlasanIstriDatangKeDesa" class="form-control" onchange="showAlasanIstriDatangKeDesaLainnya()">
+                    <option value="Mencari nafkah">Mencari nafkah</option>
+                    <option value="Menikah">Menikah</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+                <span asp-validation-for="AlasanIstriDatangKeDesa" class="text-danger"></span>
+            </div>
+            <div id="AlasanIstriDatangKeDesaLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AlasanIstriDatangKeDesaLainnya" class="control-label"></label>
+                <input asp-for="AlasanIstriDatangKeDesaLainnya" class="form-control" />
+                <span asp-validation-for="AlasanIstriDatangKeDesaLainnya" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <label asp-for="AsalAyahSuami" class="control-label"></label>
+                <select asp-for="AsalAyahSuami" class="form-control" onchange="showAsalAyahSuamiLuarDesa()">
+                    <option value="Asli Desa ini">Asli Desa ini</option>
+                    <option value="Luar Desa ini">Luar Desa ini</option>
+                </select>
+                <span asp-validation-for="AsalAyahSuami" class="text-danger"></span>
+            </div>
+            <div id="AsalAyahSuamiDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalAyahSuamiDesa" class="control-label"></label>
+                <input asp-for="AsalAyahSuamiDesa" class="form-control" />
+                <span asp-validation-for="AsalAyahSuamiDesa" class="text-danger"></span>
+            </div>
+            <div id="AsalAyahSuamiKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalAyahSuamiKec" class="control-label"></label>
+                <input asp-for="AsalAyahSuamiKec" class="form-control" />
+                <span asp-validation-for="AsalAyahSuamiKec" class="text-danger"></span>
+            </div>
+            <div id="AsalAyahSuamiKab" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalAyahSuamiKab" class="control-label"></label>
+                <input asp-for="AsalAyahSuamiKab" class="form-control" />
+                <span asp-validation-for="AsalAyahSuamiKab" class="text-danger"></span>
+            </div>
+            <div id="AsalAyahSuamiProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalAyahSuamiProv" class="control-label"></label>
+                <input asp-for="AsalAyahSuamiProv" class="form-control" />
+                <span asp-validation-for="AsalAyahSuamiProv" class="text-danger"></span>
+            </div>
+            <div id="AsalAyahSuamiTahun" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalAyahSuamiTahun" class="control-label"></label>
+                <input asp-for="AsalAyahSuamiTahun" class="form-control" />
+                <span asp-validation-for="AsalAyahSuamiTahun" class="text-danger"></span>
+            </div>
+            <div id="divAsalAyahSuamiAlasanPindah" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalAyahSuamiAlasanPindah" class="control-label"></label>
+                <select asp-for="AsalAyahSuamiAlasanPindah" class="form-control" onchange="showAsalAyahSuamiAlasanPindahLainnya()">
+                    <option value="Ikut orangtua">Ikut orangtua</option>
+                    <option value="Mencari nafkah">Mencari nafkah</option>
+                    <option value="Menikah">Menikah</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+                <span asp-validation-for="AsalAyahSuamiAlasanPindah" class="text-danger"></span>
+            </div>
+            <div id="AsalAyahSuamiAlasanPindahLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalAyahSuamiAlasanPindahLainnya" class="control-label"></label>
+                <input asp-for="AsalAyahSuamiAlasanPindahLainnya" class="form-control" />
+                <span asp-validation-for="AsalAyahSuamiAlasanPindahLainnya" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <label asp-for="AsalAyahIstri" class="control-label"></label>
+                <select asp-for="AsalAyahIstri" class="form-control" onchange="showAsalAyahIstriLuarDesa()">
+                    <option value="Asli Desa ini">Asli Desa ini</option>
+                    <option value="Luar Desa ini">Luar Desa ini</option>
+                </select>
+                <span asp-validation-for="AsalAyahIstri" class="text-danger"></span>
+            </div>
+            <div id="AsalAyahIstriDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalAyahIstriDesa" class="control-label"></label>
+                <input asp-for="AsalAyahIstriDesa" class="form-control" />
+                <span asp-validation-for="AsalAyahIstriDesa" class="text-danger"></span>
+            </div>
+            <div id="AsalAyahIstriKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalAyahIstriKec" class="control-label"></label>
+                <input asp-for="AsalAyahIstriKec" class="form-control" />
+                <span asp-validation-for="AsalAyahIstriKec" class="text-danger"></span>
+            </div>
+            <div id="AsalAyahIstriKab" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalAyahIstriKab" class="control-label"></label>
+                <input asp-for="AsalAyahIstriKab" class="form-control" />
+                <span asp-validation-for="AsalAyahIstriKab" class="text-danger"></span>
+            </div>
+            <div id="AsalAyahIstriProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalAyahIstriProv" class="control-label"></label>
+                <input asp-for="AsalAyahIstriProv" class="form-control" />
+                <span asp-validation-for="AsalAyahIstriProv" class="text-danger"></span>
+            </div>
+            <div id="AsalAyahIstriTahun" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalAyahIstriTahun" class="control-label"></label>
+                <input asp-for="AsalAyahIstriTahun" class="form-control" />
+                <span asp-validation-for="AsalAyahIstriTahun" class="text-danger"></span>
+            </div>
+            <div id="divAsalAyahIstriAlasanPindah" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalAyahIstriAlasanPindah" class="control-label"></label>
+                <select asp-for="AsalAyahIstriAlasanPindah" class="form-control" onchange="showAsalAyahIstriAlasanPindahLainnya()">
+                    <option value="Ikut orangtua">Ikut orangtua</option>
+                    <option value="Mencari nafkah">Mencari nafkah</option>
+                    <option value="Menikah">Menikah</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+                <span asp-validation-for="AsalAyahIstriAlasanPindah" class="text-danger"></span>
+            </div>
+            <div id="AsalAyahIstriAlasanPindahLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalAyahIstriAlasanPindahLainnya" class="control-label"></label>
+                <input asp-for="AsalAyahIstriAlasanPindahLainnya" class="form-control" />
+                <span asp-validation-for="AsalAyahIstriAlasanPindahLainnya" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <label asp-for="AsalIbuSuami" class="control-label"></label>
+                <select asp-for="AsalIbuSuami" class="form-control" onchange="showAsalIbuSuamiLuarDesa()">
+                    <option value="Asli Desa ini">Asli Desa ini</option>
+                    <option value="Luar Desa ini">Luar Desa ini</option>
+                </select>
+                <span asp-validation-for="AsalIbuSuami" class="text-danger"></span>
+            </div>
+            <div id="AsalIbuSuamiDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalIbuSuamiDesa" class="control-label"></label>
+                <input asp-for="AsalIbuSuamiDesa" class="form-control" />
+                <span asp-validation-for="AsalIbuSuamiDesa" class="text-danger"></span>
+            </div>
+            <div id="AsalIbuSuamiKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalIbuSuamiKec" class="control-label"></label>
+                <input asp-for="AsalIbuSuamiKec" class="form-control" />
+                <span asp-validation-for="AsalIbuSuamiKec" class="text-danger"></span>
+            </div>
+            <div id="AsalIbuSuamiKab" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalIbuSuamiKab" class="control-label"></label>
+                <input asp-for="AsalIbuSuamiKab" class="form-control" />
+                <span asp-validation-for="AsalIbuSuamiKab" class="text-danger"></span>
+            </div>
+            <div id="AsalIbuSuamiProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalIbuSuamiProv" class="control-label"></label>
+                <input asp-for="AsalIbuSuamiProv" class="form-control" />
+                <span asp-validation-for="AsalIbuSuamiProv" class="text-danger"></span>
+            </div>
+            <div id="AsalIbuSuamiTahun" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalIbuSuamiTahun" class="control-label"></label>
+                <input asp-for="AsalIbuSuamiTahun" class="form-control" />
+                <span asp-validation-for="AsalIbuSuamiTahun" class="text-danger"></span>
+            </div>
+            <div id="divAsalIbuSuamiAlasanPindah" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalIbuSuamiAlasanPindah" class="control-label"></label>
+                <select asp-for="AsalIbuSuamiAlasanPindah" class="form-control" onchange="showAsalIbuSuamiAlasanPindahLainnya()">
+                    <option value="Ikut orangtua">Ikut orangtua</option>
+                    <option value="Mencari nafkah">Mencari nafkah</option>
+                    <option value="Menikah">Menikah</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+                <span asp-validation-for="AsalIbuSuamiAlasanPindah" class="text-danger"></span>
+            </div>
+            <div id="AsalIbuSuamiAlasanPindahLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalIbuSuamiAlasanPindahLainnya" class="control-label"></label>
+                <input asp-for="AsalIbuSuamiAlasanPindahLainnya" class="form-control" />
+                <span asp-validation-for="AsalIbuSuamiAlasanPindahLainnya" class="text-danger"></span>
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <label asp-for="AsalIbuIstri" class="control-label"></label>
+                <select asp-for="AsalIbuIstri" class="form-control" onchange="showAsalIbuIstriLuarDesa()">
+                    <option value="Asli Desa ini">Asli Desa ini</option>
+                    <option value="Luar Desa ini">Luar Desa ini</option>
+                </select>
+                <span asp-validation-for="AsalIbuIstri" class="text-danger"></span>
+            </div>
+            <div id="AsalIbuIstriDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalIbuIstriDesa" class="control-label"></label>
+                <input asp-for="AsalIbuIstriDesa" class="form-control" />
+                <span asp-validation-for="AsalIbuIstriDesa" class="text-danger"></span>
+            </div>
+            <div id="AsalIbuIstriKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalIbuIstriKec" class="control-label"></label>
+                <input asp-for="AsalIbuIstriKec" class="form-control" />
+                <span asp-validation-for="AsalIbuIstriKec" class="text-danger"></span>
+            </div>
+            <div id="AsalIbuIstriKab" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalIbuIstriKab" class="control-label"></label>
+                <input asp-for="AsalIbuIstriKab" class="form-control" />
+                <span asp-validation-for="AsalIbuIstriKab" class="text-danger"></span>
+            </div>
+            <div id="AsalIbuIstriProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalIbuIstriProv" class="control-label"></label>
+                <input asp-for="AsalIbuIstriProv" class="form-control" />
+                <span asp-validation-for="AsalIbuIstriProv" class="text-danger"></span>
+            </div>
+            <div id="AsalIbuIstriTahun" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalIbuIstriTahun" class="control-label"></label>
+                <input asp-for="AsalIbuIstriTahun" class="form-control" />
+                <span asp-validation-for="AsalIbuIstriTahun" class="text-danger"></span>
+            </div>
+            <div id="divAsalIbuIstriAlasanPindah" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalIbuIstriAlasanPindah" class="control-label"></label>
+                <select asp-for="AsalIbuIstriAlasanPindah" class="form-control" onchange="showAsalIbuIstriAlasanPindahLainnya()">
+                    <option value="Ikut orangtua">Ikut orangtua</option>
+                    <option value="Mencari nafkah">Mencari nafkah</option>
+                    <option value="Menikah">Menikah</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+                <span asp-validation-for="AsalIbuIstriAlasanPindah" class="text-danger"></span>
+            </div>
+            <div id="AsalIbuIstriAlasanPindahLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="AsalIbuIstriAlasanPindahLainnya" class="control-label"></label>
+                <input asp-for="AsalIbuIstriAlasanPindahLainnya" class="form-control" />
+                <span asp-validation-for="AsalIbuIstriAlasanPindahLainnya" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Next" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+<div>
+    <a asp-action="Cancel" asp-route-id="@ViewBag.RespondenID" class="btn btn-danger">Cancel</a>
+</div>
+
+@*<script type="text/javascript">
+    function showAlasanSuamiDatangKeDesaLainnya() {
+        if ($('#AlasanSuamiDatangKeDesa').val() == 'Lainnya') {
+            $('#AlasanSuamiDatangKeDesaLainnya').css({ 'visibility': 'visible' });
+            $('#AlasanSuamiDatangKeDesaLainnya').css({ 'display': 'contents' });
+        }
+        else {
+            $('#AlasanSuamiDatangKeDesaLainnya').css({ 'visibility': 'hidden' });
+            $('#AlasanSuamiDatangKeDesaLainnya').css({ 'display': 'none' });
+        }
+    } 
+
+    function showAlasanIstriDatangKeDesaLainnya() {
+        if ($('#AlasanIstriDatangKeDesa').val() == 'Lainnya') {
+            $('#AlasanIstriDatangKeDesaLainnya').css({ 'visibility': 'visible' });
+            $('#AlasanIstriDatangKeDesaLainnya').css({ 'display': 'contents' });
+        }
+        else {
+            $('#AlasanIstriDatangKeDesaLainnya').css({ 'visibility': 'hidden' });
+            $('#AlasanIstriDatangKeDesaLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    function showAsalAyahSuamiLuarDesa() {
+        if ($('#AsalAyahSuami').val() == 'Luar Desa ini') {
+            $('#AsalAyahSuamiDesa').css({ 'visibility': 'visible' });
+            $('#AsalAyahSuamiKec').css({ 'visibility': 'visible' });
+            $('#AsalAyahSuamiKab').css({ 'visibility': 'visible' });
+            $('#AsalAyahSuamiProv').css({ 'visibility': 'visible' });
+            $('#AsalAyahSuamiTahun').css({ 'visibility': 'visible' });
+            $('#divAsalAyahSuamiAlasanPindah').css({ 'visibility': 'visible' });
+            $('#AsalAyahSuamiDesa').css({ 'display': 'contents' });
+            $('#AsalAyahSuamiKec').css({ 'display': 'contents' });
+            $('#AsalAyahSuamiKab').css({ 'display': 'contents' });
+            $('#AsalAyahSuamiProv').css({ 'display': 'contents' });
+            $('#AsalAyahSuamiTahun').css({ 'display': 'contents' });
+            $('#divAsalAyahSuamiAlasanPindah').css({ 'display': 'contents' });
+        }
+        else {
+            $('#AsalAyahSuamiDesa').css({ 'visibility': 'hidden' });
+            $('#AsalAyahSuamiKec').css({ 'visibility': 'hidden' });
+            $('#AsalAyahSuamiKab').css({ 'visibility': 'hidden' });
+            $('#AsalAyahSuamiProv').css({ 'visibility': 'hidden' });
+            $('#AsalAyahSuamiTahun').css({ 'visibility': 'hidden' });
+            $('#divAsalAyahSuamiAlasanPindah').css({ 'visibility': 'hidden' });
+            $('#AsalAyahSuamiDesa').css({ 'display': 'none' });
+            $('#AsalAyahSuamiKec').css({ 'display': 'none' });
+            $('#AsalAyahSuamiKab').css({ 'display': 'none' });
+            $('#AsalAyahSuamiProv').css({ 'display': 'none' });
+            $('#AsalAyahSuamiTahun').css({ 'display': 'none' });
+            $('#divAsalAyahSuamiAlasanPindah').css({ 'display': 'none' });
+
+            $('#AsalAyahSuamiAlasanPindahLainnya').css({ 'visibility': 'hidden' });
+            $('#AsalAyahSuamiAlasanPindahLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    function showAsalAyahIstriLuarDesa() {
+        if ($('#AsalAyahIstri').val() == 'Luar Desa ini') {
+            $('#AsalAyahIstriDesa').css({ 'visibility': 'visible' });
+            $('#AsalAyahIstriKec').css({ 'visibility': 'visible' });
+            $('#AsalAyahIstriKab').css({ 'visibility': 'visible' });
+            $('#AsalAyahIstriProv').css({ 'visibility': 'visible' });
+            $('#AsalAyahIstriTahun').css({ 'visibility': 'visible' });
+            $('#divAsalAyahIstriAlasanPindah').css({ 'visibility': 'visible' });
+            $('#AsalAyahIstriDesa').css({ 'display': 'contents' });
+            $('#AsalAyahIstriKec').css({ 'display': 'contents' });
+            $('#AsalAyahIstriKab').css({ 'display': 'contents' });
+            $('#AsalAyahIstriProv').css({ 'display': 'contents' });
+            $('#AsalAyahIstriTahun').css({ 'display': 'contents' });
+            $('#divAsalAyahIstriAlasanPindah').css({ 'display': 'contents' });
+        }
+        else {
+            $('#AsalAyahIstriDesa').css({ 'visibility': 'hidden' });
+            $('#AsalAyahIstriKec').css({ 'visibility': 'hidden' });
+            $('#AsalAyahIstriKab').css({ 'visibility': 'hidden' });
+            $('#AsalAyahIstriProv').css({ 'visibility': 'hidden' });
+            $('#AsalAyahIstriTahun').css({ 'visibility': 'hidden' });
+            $('#divAsalAyahIstriAlasanPindah').css({ 'visibility': 'hidden' });
+            $('#AsalAyahIstriDesa').css({ 'display': 'none' });
+            $('#AsalAyahIstriKec').css({ 'display': 'none' });
+            $('#AsalAyahIstriKab').css({ 'display': 'none' });
+            $('#AsalAyahIstriProv').css({ 'display': 'none' });
+            $('#AsalAyahIstriTahun').css({ 'display': 'none' });
+            $('#divAsalAyahIstriAlasanPindah').css({ 'display': 'none' });
+
+            $('#AsalAyahIstriAlasanPindahLainnya').css({ 'visibility': 'hidden' });
+            $('#AsalAyahIstriAlasanPindahLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    function showAsalIbuSuamiLuarDesa() {
+        if ($('#AsalIbuSuami').val() == 'Luar Desa ini') {
+            $('#AsalIbuSuamiDesa').css({ 'visibility': 'visible' });
+            $('#AsalIbuSuamiKec').css({ 'visibility': 'visible' });
+            $('#AsalIbuSuamiKab').css({ 'visibility': 'visible' });
+            $('#AsalIbuSuamiProv').css({ 'visibility': 'visible' });
+            $('#AsalIbuSuamiTahun').css({ 'visibility': 'visible' });
+            $('#divAsalIbuSuamiAlasanPindah').css({ 'visibility': 'visible' });
+            $('#AsalIbuSuamiDesa').css({ 'display': 'contents' });
+            $('#AsalIbuSuamiKec').css({ 'display': 'contents' });
+            $('#AsalIbuSuamiKab').css({ 'display': 'contents' });
+            $('#AsalIbuSuamiProv').css({ 'display': 'contents' });
+            $('#AsalIbuSuamiTahun').css({ 'display': 'contents' });
+            $('#divAsalIbuSuamiAlasanPindah').css({ 'display': 'contents' });
+        }
+        else {
+            $('#AsalIbuSuamiDesa').css({ 'visibility': 'hidden' });
+            $('#AsalIbuSuamiKec').css({ 'visibility': 'hidden' });
+            $('#AsalIbuSuamiKab').css({ 'visibility': 'hidden' });
+            $('#AsalIbuSuamiProv').css({ 'visibility': 'hidden' });
+            $('#AsalIbuSuamiTahun').css({ 'visibility': 'hidden' });
+            $('#divAsalIbuSuamiAlasanPindah').css({ 'visibility': 'hidden' });
+            $('#AsalIbuSuamiDesa').css({ 'display': 'none' });
+            $('#AsalIbuSuamiKec').css({ 'display': 'none' });
+            $('#AsalIbuSuamiKab').css({ 'display': 'none' });
+            $('#AsalIbuSuamiProv').css({ 'display': 'none' });
+            $('#AsalIbuSuamiTahun').css({ 'display': 'none' });
+            $('#divAsalIbuSuamiAlasanPindah').css({ 'display': 'none' });
+
+            $('#AsalIbuSuamiAlasanPindahLainnya').css({ 'visibility': 'hidden' });
+            $('#AsalIbuSuamiAlasanPindahLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    function showAsalIbuIstriLuarDesa() {
+        if ($('#AsalIbuIstri').val() == 'Luar Desa ini') {
+            $('#AsalIbuIstriDesa').css({ 'visibility': 'visible' });
+            $('#AsalIbuIstriKec').css({ 'visibility': 'visible' });
+            $('#AsalIbuIstriKab').css({ 'visibility': 'visible' });
+            $('#AsalIbuIstriProv').css({ 'visibility': 'visible' });
+            $('#AsalIbuIstriTahun').css({ 'visibility': 'visible' });
+            $('#divAsalIbuIstriAlasanPindah').css({ 'visibility': 'visible' });
+            $('#AsalIbuIstriDesa').css({ 'display': 'contents' });
+            $('#AsalIbuIstriKec').css({ 'display': 'contents' });
+            $('#AsalIbuIstriKab').css({ 'display': 'contents' });
+            $('#AsalIbuIstriProv').css({ 'display': 'contents' });
+            $('#AsalIbuIstriTahun').css({ 'display': 'contents' });
+            $('#divAsalIbuIstriAlasanPindah').css({ 'display': 'contents' });
+        }
+        else {
+            $('#AsalIbuIstriDesa').css({ 'visibility': 'hidden' });
+            $('#AsalIbuIstriKec').css({ 'visibility': 'hidden' });
+            $('#AsalIbuIstriKab').css({ 'visibility': 'hidden' });
+            $('#AsalIbuIstriProv').css({ 'visibility': 'hidden' });
+            $('#AsalIbuIstriTahun').css({ 'visibility': 'hidden' });
+            $('#divAsalIbuIstriAlasanPindah').css({ 'visibility': 'hidden' });
+            $('#AsalIbuIstriDesa').css({ 'display': 'none' });
+            $('#AsalIbuIstriKec').css({ 'display': 'none' });
+            $('#AsalIbuIstriKab').css({ 'display': 'none' });
+            $('#AsalIbuIstriProv').css({ 'display': 'none' });
+            $('#AsalIbuIstriTahun').css({ 'display': 'none' });
+            $('#divAsalIbuIstriAlasanPindah').css({ 'display': 'none' });
+
+            $('#AsalIbuIstriAlasanPindahLainnya').css({ 'visibility': 'hidden' });
+            $('#AsalIbuIstriAlasanPindahLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    function showAsalAyahSuamiAlasanPindahLainnya() {
+        if ($('#AsalAyahSuamiAlasanPindah').val() == 'Lainnya') {
+            $('#AsalAyahSuamiAlasanPindahLainnya').css({ 'visibility': 'visible' });
+            $('#AsalAyahSuamiAlasanPindahLainnya').css({ 'display': 'contents' });
+        }
+        else {
+            $('#AsalAyahSuamiAlasanPindahLainnya').css({ 'visibility': 'hidden' });
+            $('#AsalAyahSuamiAlasanPindahLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    function showAsalAyahIstriAlasanPindahLainnya() {
+        if ($('#AsalAyahIstriAlasanPindah').val() == 'Lainnya') {
+            $('#AsalAyahIstriAlasanPindahLainnya').css({ 'visibility': 'visible' });
+            $('#AsalAyahIstriAlasanPindahLainnya').css({ 'display': 'contents' });
+        }
+        else {
+            $('#AsalAyahIstriAlasanPindahLainnya').css({ 'visibility': 'hidden' });
+            $('#AsalAyahIstriAlasanPindahLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    function showAsalIbuSuamiAlasanPindahLainnya() {
+        if ($('#AsalIbuSuamiAlasanPindah').val() == 'Lainnya') {
+            $('#AsalIbuSuamiAlasanPindahLainnya').css({ 'visibility': 'visible' });
+            $('#AsalIbuSuamiAlasanPindahLainnya').css({ 'display': 'contents' });
+        }
+        else {
+            $('#AsalIbuSuamiAlasanPindahLainnya').css({ 'visibility': 'hidden' });
+            $('#AsalIbuSuamiAlasanPindahLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    function showAsalIbuIstriAlasanPindahLainnya() {
+        if ($('#AsalIbuIstriAlasanPindah').val() == 'Lainnya') {
+            $('#AsalIbuIstriAlasanPindahLainnya').css({ 'visibility': 'visible' });
+            $('#AsalIbuIstriAlasanPindahLainnya').css({ 'display': 'contents' });
+        }
+        else {
+            $('#AsalIbuIstriAlasanPindahLainnya').css({ 'visibility': 'hidden' });
+            $('#AsalIbuIstriAlasanPindahLainnya').css({ 'display': 'none' });
+        }
+    } 
+</script>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

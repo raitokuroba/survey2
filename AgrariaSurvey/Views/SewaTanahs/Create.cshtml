@@ -1,0 +1,153 @@
+﻿@model AgrariaSurvey.Models.SewaTanah
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>SewaTanah</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RespondenId" class="control-label"></label>
+                <input asp-for="RespondenId" class="form-control" />
+                <span asp-validation-for="RespondenId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SedangMenyewaTanah" class="control-label"></label>
+                <input asp-for="SedangMenyewaTanah" class="form-control" />
+                <span asp-validation-for="SedangMenyewaTanah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DariSiapaMenyewa" class="control-label"></label>
+                <input asp-for="DariSiapaMenyewa" class="form-control" />
+                <span asp-validation-for="DariSiapaMenyewa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanMenyewa" class="control-label"></label>
+                <input asp-for="AlasanMenyewa" class="form-control" />
+                <span asp-validation-for="AlasanMenyewa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LuasTanahDisewa" class="control-label"></label>
+                <input asp-for="LuasTanahDisewa" class="form-control" />
+                <span asp-validation-for="LuasTanahDisewa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BiayaSewaTanah" class="control-label"></label>
+                <input asp-for="BiayaSewaTanah" class="form-control" />
+                <span asp-validation-for="BiayaSewaTanah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LokasiLahanSewa" class="control-label"></label>
+                <input asp-for="LokasiLahanSewa" class="form-control" />
+                <span asp-validation-for="LokasiLahanSewa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TahunMenyewaTanah" class="control-label"></label>
+                <input asp-for="TahunMenyewaTanah" class="form-control" />
+                <span asp-validation-for="TahunMenyewaTanah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TahunSampaiKontrak" class="control-label"></label>
+                <input asp-for="TahunSampaiKontrak" class="form-control" />
+                <span asp-validation-for="TahunSampaiKontrak" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BentukLegalitasTanah" class="control-label"></label>
+                <input asp-for="BentukLegalitasTanah" class="form-control" />
+                <span asp-validation-for="BentukLegalitasTanah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsahaTanahSewa" class="control-label"></label>
+                <input asp-for="UsahaTanahSewa" class="form-control" />
+                <span asp-validation-for="UsahaTanahSewa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TanahSewaSubur" class="control-label"></label>
+                <input asp-for="TanahSewaSubur" class="form-control" />
+                <span asp-validation-for="TanahSewaSubur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HasilUsahaTani" class="control-label"></label>
+                <input asp-for="HasilUsahaTani" class="form-control" />
+                <span asp-validation-for="HasilUsahaTani" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenagaMengelolaTanah" class="control-label"></label>
+                <input asp-for="TenagaMengelolaTanah" class="form-control" />
+                <span asp-validation-for="TenagaMengelolaTanah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JumlahAnggotaKeluarga" class="control-label"></label>
+                <input asp-for="JumlahAnggotaKeluarga" class="form-control" />
+                <span asp-validation-for="JumlahAnggotaKeluarga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JumlahBuruhTani" class="control-label"></label>
+                <input asp-for="JumlahBuruhTani" class="form-control" />
+                <span asp-validation-for="JumlahBuruhTani" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AsalBuruhTani" class="control-label"></label>
+                <input asp-for="AsalBuruhTani" class="form-control" />
+                <span asp-validation-for="AsalBuruhTani" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MenyewakanTanah" class="control-label"></label>
+                <input asp-for="MenyewakanTanah" class="form-control" />
+                <span asp-validation-for="MenyewakanTanah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KepadaSiapaMenyewakan" class="control-label"></label>
+                <input asp-for="KepadaSiapaMenyewakan" class="form-control" />
+                <span asp-validation-for="KepadaSiapaMenyewakan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LuasTanahSewakan" class="control-label"></label>
+                <input asp-for="LuasTanahSewakan" class="form-control" />
+                <span asp-validation-for="LuasTanahSewakan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LokasiTanahDisewakan" class="control-label"></label>
+                <input asp-for="LokasiTanahDisewakan" class="form-control" />
+                <span asp-validation-for="LokasiTanahDisewakan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlasanMenyewakan" class="control-label"></label>
+                <input asp-for="AlasanMenyewakan" class="form-control" />
+                <span asp-validation-for="AlasanMenyewakan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UangSewaTanah" class="control-label"></label>
+                <input asp-for="UangSewaTanah" class="form-control" />
+                <span asp-validation-for="UangSewaTanah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TahunMenyewakan" class="control-label"></label>
+                <input asp-for="TahunMenyewakan" class="form-control" />
+                <span asp-validation-for="TahunMenyewakan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KontrakSewa" class="control-label"></label>
+                <input asp-for="KontrakSewa" class="form-control" />
+                <span asp-validation-for="KontrakSewa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

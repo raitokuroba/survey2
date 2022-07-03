@@ -1,0 +1,88 @@
+﻿@model AgrariaSurvey.Models.IdentitasResponden
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<div class="row">
+    <div class="col-lg-6">
+        <h4>IdentitasResponden</h4>
+    </div>
+    <div class="col-lg-6">
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#petunjukModal">Petunjuk</button>
+    </div>
+</div>
+
+<div id="petunjukModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Petunjuk</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>Bagian B</strong> merupakan identitas responden. Responden adalah orang yang memberi informasi tentang segala hal dari rumah tangga yang sedang diteliti.  Identitas responden mancakup nama, jenis kelamin dan nomor <i>handphone</i>.
+                </p>
+                <h5>Output</h5>
+                <p>
+                    Identitas responden
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Got It</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdentitasRespondenID" />
+            <input type="hidden" asp-for="RespondenID" value="@ViewBag.RespondenID" />
+            <div class="form-group">
+                <label asp-for="NomorResponden" class="control-label"></label>
+                <input asp-for="NomorResponden" class="form-control" value="@ViewBag.NomorResponden" />
+                <span asp-validation-for="NomorResponden" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NamaResponden" class="control-label"></label>
+                <input asp-for="NamaResponden" class="form-control" />
+                <span asp-validation-for="NamaResponden" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JenisKelaminResponden" class="control-label"></label>
+                <select asp-for="JenisKelaminResponden" class="form-control">
+                    <option>-- Select --</option>
+                    <option value="1">Perempuan</option>
+                    <option value="2">Laki-laki</option>
+                </select>
+                <span asp-validation-for="JenisKelaminResponden" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoHpResponden" class="control-label"></label>
+                <input asp-for="NoHpResponden" class="form-control" />
+                <span asp-validation-for="NoHpResponden" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save & Next" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+<div>
+    <a asp-controller="Respondens" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

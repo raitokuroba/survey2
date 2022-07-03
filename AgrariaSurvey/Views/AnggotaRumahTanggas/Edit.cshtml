@@ -1,0 +1,626 @@
+﻿@model AgrariaSurvey.Models.AnggotaRumahTangga
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<div class="row">
+    <div class="col-lg-6">
+        <h4>AnggotaRumahTangga</h4>
+    </div>
+    <div class="col-lg-6">
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#petunjukModal">Petunjuk</button>
+    </div>
+</div>
+
+<div id="petunjukModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Petunjuk</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>Bagian D</strong> merupakan riwayat asal usul kedatangan Kepala Keluarga ke Desa Ini.  Penelusuran dilakukan dengan melacak kedua orangtua dari pasangan suami-istri tersebut dalam kaitannya dengan sejarah berdomisili di Desa penelitian ini.
+                </p>
+                <p>
+                    Penelusuran dilakukan terhadap orangtua dari pihak suami dan orangtua dari pihak istri.
+                </p>
+                <p>
+                    Jika rumahtangga terdiri lebih dari satu keluarga, maka data yang diambil adalah keluarga (suami dan istri) dari pihak Kepala Keluarga dan/atau berdasarkan Kepala keluarga sebagaimana Kartu Keluarga (KK) yang didaftarkan dalam <strong>Formulir C1</strong>
+                </p>
+                <h5>Output</h5>
+                <p>
+                    Riwayat bermukim rumahtangga, berapa lama tinggal di Desa Ini, identifikasi migrasi dan latar belakangnya, serta keterangan keaslian penduduk di Desa penelitian Ini.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Got It</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AnggotaRumahTanggaID" />
+            <div class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="RespondenID" class="control-label"></label>
+                <input asp-for="RespondenID" class="form-control" value="@ViewBag.RespondenID" />
+            </div>
+            <div class="form-group">
+                <label asp-for="NoART" class="control-label"></label>
+                <input asp-for="NoART" class="form-control" value="@ViewBag.NoART" />
+                <span asp-validation-for="NoART" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nama" class="control-label"></label>
+                <input asp-for="Nama" class="form-control" />
+                <span asp-validation-for="Nama" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HubunganDenganKepalaKeluarga" class="control-label"></label>
+                <select asp-for="HubunganDenganKepalaKeluarga" class="form-control" asp-items="ViewBag.HubunganDenganKepalaKeluarga" onchange="showHubunganDenganKepalaKeluargaLainnya()"></select>
+            </div>
+            <div id="HubunganDenganKepalaKeluargaLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="HubunganDenganKepalaKeluargaLainnya" class="control-label"></label>
+                <input asp-for="HubunganDenganKepalaKeluargaLainnya" class="form-control" />
+                <span asp-validation-for="HubunganDenganKepalaKeluargaLainnya" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JenisKelamin" class="control-label"></label>
+                <select asp-for="JenisKelamin" class="form-control">
+                    <option>-- Select --</option>
+                    <option value="1">Perempuan</option>
+                    <option value="2">Laki-laki</option>
+                </select>
+                <span asp-validation-for="JenisKelamin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Umur" class="control-label"></label>
+                <input asp-for="Umur" class="form-control" />
+                <span asp-validation-for="Umur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TanggalLahir" class="control-label"></label>
+                <input type="date" asp-for="TanggalLahir" class="form-control" />
+                <span asp-validation-for="TanggalLahir" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StatusNikah" class="control-label"></label>
+                <select asp-for="StatusNikah" class="form-control" asp-items="ViewBag.StatusNikah"></select>
+                <span asp-validation-for="StatusNikah" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EtnisSuku" class="control-label"></label>
+                <select asp-for="EtnisSuku" class="form-control" asp-items="ViewBag.EtnisSuku"></select>
+                <span asp-validation-for="EtnisSuku" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BahasaSehari" class="control-label"></label>
+                <select asp-for="BahasaSehari" class="form-control" asp-items="ViewBag.BahasaSehari"></select>
+                <span asp-validation-for="BahasaSehari" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PendidikanTertinggi" class="control-label"></label>
+                <select asp-for="PendidikanTertinggi" class="form-control" asp-items="ViewBag.PendidikanTertinggi"></select>
+                <span asp-validation-for="PendidikanTertinggi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TempatLahir" class="control-label"></label>
+                <select asp-for="TempatLahir" class="form-control" asp-items="ViewBag.TempatLahir" onchange="showTempatLahirDetail()"></select>
+                <span asp-validation-for="TempatLahir" class="text-danger"></span>
+            </div>
+            <div id="TempatLahirDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirDesa" class="control-label"></label>
+                <input asp-for="TempatLahirDesa" class="form-control" />
+                <span asp-validation-for="TempatLahirDesa" class="text-danger"></span>
+            </div>
+            <div id="TempatLahirKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirKec" class="control-label"></label>
+                <input asp-for="TempatLahirKec" class="form-control" />
+                <span asp-validation-for="TempatLahirKec" class="text-danger"></span>
+            </div>
+            <div id="TempatLahirKab" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirKab" class="control-label"></label>
+                <input asp-for="TempatLahirKab" class="form-control" />
+                <span asp-validation-for="TempatLahirKab" class="text-danger"></span>
+            </div>
+            <div id="TempatLahirProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirProv" class="control-label"></label>
+                <input asp-for="TempatLahirProv" class="form-control" />
+                <span asp-validation-for="TempatLahirProv" class="text-danger"></span>
+            </div>
+            <div id="TempatLahirNeg" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatLahirNeg" class="control-label"></label>
+                <input asp-for="TempatLahirNeg" class="form-control" />
+                <span asp-validation-for="TempatLahirNeg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TempatTinggalLalu" class="control-label"></label>
+                <select asp-for="TempatTinggalLalu" class="form-control" asp-items="ViewBag.TempatLahir" onchange="showTempatTinggalLaluDetail()"></select>
+                <span asp-validation-for="TempatTinggalLalu" class="text-danger"></span>
+            </div>
+            <div id="TempatTinggalLaluDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatTinggalLaluDesa" class="control-label"></label>
+                <input asp-for="TempatTinggalLaluDesa" class="form-control" />
+                <span asp-validation-for="TempatTinggalLaluDesa" class="text-danger"></span>
+            </div>
+            <div id="TempatTinggalLaluKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatTinggalLaluKec" class="control-label"></label>
+                <input asp-for="TempatTinggalLaluKec" class="form-control" />
+                <span asp-validation-for="TempatTinggalLaluKec" class="text-danger"></span>
+            </div>
+            <div id="TempatTinggalLaluKab" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatTinggalLaluKab" class="control-label"></label>
+                <input asp-for="TempatTinggalLaluKab" class="form-control" />
+                <span asp-validation-for="TempatTinggalLaluKab" class="text-danger"></span>
+            </div>
+            <div id="TempatTinggalLaluProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatTinggalLaluProv" class="control-label"></label>
+                <input asp-for="TempatTinggalLaluProv" class="form-control" />
+                <span asp-validation-for="TempatTinggalLaluProv" class="text-danger"></span>
+            </div>
+            <div id="TempatTinggalLaluNeg" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="TempatTinggalLaluNeg" class="control-label"></label>
+                <input asp-for="TempatTinggalLaluNeg" class="form-control" />
+                <span asp-validation-for="TempatTinggalLaluNeg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PekerjaanUtama" class="control-label"></label>
+                <select asp-for="PekerjaanUtama" class="form-control" asp-items="ViewBag.PekerjaanUtama" onchange="showPekerjaanUtamaLainnya()"></select>
+                <span asp-validation-for="PekerjaanUtama" class="text-danger"></span>
+            </div>
+            <div id="PekerjaanUtamaLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="PekerjaanUtamaLainnya" class="control-label"></label>
+                <input asp-for="PekerjaanUtamaLainnya" class="form-control" />
+                <span asp-validation-for="PekerjaanUtamaLainnya" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LokasiKerjaUtama" class="control-label"></label>
+                <select asp-for="LokasiKerjaUtama" class="form-control" asp-items="ViewBag.TempatLahir" onchange="showLokasiKerjaUtamaDetail()"></select>
+                <span asp-validation-for="LokasiKerjaUtama" class="text-danger"></span>
+            </div>
+            <div id="LokasiKerjaUtamaDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="LokasiKerjaUtamaDesa" class="control-label"></label>
+                <input asp-for="LokasiKerjaUtamaDesa" class="form-control" />
+                <span asp-validation-for="LokasiKerjaUtamaDesa" class="text-danger"></span>
+            </div>
+            <div id="LokasiKerjaUtamaKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="LokasiKerjaUtamaKec" class="control-label"></label>
+                <input asp-for="LokasiKerjaUtamaKec" class="form-control" />
+                <span asp-validation-for="LokasiKerjaUtamaKec" class="text-danger"></span>
+            </div>
+            <div id="LokasiKerjaUtamaKab" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="LokasiKerjaUtamaKab" class="control-label"></label>
+                <input asp-for="LokasiKerjaUtamaKab" class="form-control" />
+                <span asp-validation-for="LokasiKerjaUtamaKab" class="text-danger"></span>
+            </div>
+            <div id="LokasiKerjaUtamaProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="LokasiKerjaUtamaProv" class="control-label"></label>
+                <input asp-for="LokasiKerjaUtamaProv" class="form-control" />
+                <span asp-validation-for="LokasiKerjaUtamaProv" class="text-danger"></span>
+            </div>
+            <div id="LokasiKerjaUtamaNeg" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="LokasiKerjaUtamaNeg" class="control-label"></label>
+                <input asp-for="LokasiKerjaUtamaNeg" class="form-control" />
+                <span asp-validation-for="LokasiKerjaUtamaNeg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PekerjaanUSampingan" class="control-label"></label>
+                <select asp-for="PekerjaanUSampingan" class="form-control" asp-items="ViewBag.PekerjaanUtama" onchange="showPekerjaanSampinganLainnya()"></select>
+                <span asp-validation-for="PekerjaanUSampingan" class="text-danger"></span>
+            </div>
+            <div id="PekerjaanSampinganLainnya" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="PekerjaanSampinganLainnya" class="control-label"></label>
+                <input asp-for="PekerjaanSampinganLainnya" class="form-control" />
+                <span asp-validation-for="PekerjaanSampinganLainnya" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LokasiKerjaSamping" class="control-label"></label>
+                <select asp-for="LokasiKerjaSamping" class="form-control" asp-items="ViewBag.TempatLahir" onchange="showLokasiKerjaSampingDetail()"></select>
+                <span asp-validation-for="LokasiKerjaSamping" class="text-danger"></span>
+            </div>
+            <div id="LokasiKerjaSampingDesa" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="LokasiKerjaSampingDesa" class="control-label"></label>
+                <input asp-for="LokasiKerjaSampingDesa" class="form-control" />
+                <span asp-validation-for="LokasiKerjaSampingDesa" class="text-danger"></span>
+            </div>
+            <div id="LokasiKerjaSampingKec" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="LokasiKerjaSampingKec" class="control-label"></label>
+                <input asp-for="LokasiKerjaSampingKec" class="form-control" />
+                <span asp-validation-for="LokasiKerjaSampingKec" class="text-danger"></span>
+            </div>
+            <div id="LokasiKerjaSampingKab" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="LokasiKerjaSampingKab" class="control-label"></label>
+                <input asp-for="LokasiKerjaSampingKab" class="form-control" />
+                <span asp-validation-for="LokasiKerjaSampingKab" class="text-danger"></span>
+            </div>
+            <div id="LokasiKerjaSampingProv" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="LokasiKerjaSampingProv" class="control-label"></label>
+                <input asp-for="LokasiKerjaSampingProv" class="form-control" />
+                <span asp-validation-for="LokasiKerjaSampingProv" class="text-danger"></span>
+            </div>
+            <div id="LokasiKerjaSampingNeg" class="form-group" style="visibility:hidden; display:none">
+                <label asp-for="LokasiKerjaSampingNeg" class="control-label"></label>
+                <input asp-for="LokasiKerjaSampingNeg" class="form-control" />
+                <span asp-validation-for="LokasiKerjaSampingNeg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-route-respondenId="@ViewBag.RespondenID">Back to List</a>
+</div>
+
+<script type="text/javascript">
+    function showHubunganDenganKepalaKeluargaLainnya() {
+        if ($('#HubunganDenganKepalaKeluarga').val() == '15') {
+            $('#HubunganDenganKepalaKeluargaLainnya').css({ 'visibility': 'visible' });
+            $('#HubunganDenganKepalaKeluargaLainnya').css({ 'display': 'contents' });
+        }
+        else {
+            $('#HubunganDenganKepalaKeluargaLainnya').css({ 'visibility': 'hidden' });
+            $('#HubunganDenganKepalaKeluargaLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    function showTempatLahirDetail() {
+        if ($('#TempatLahir').val() == '2') {
+            $('#TempatLahirDesa').css({ 'visibility': 'visible' });
+            $('#TempatLahirDesa').css({ 'display': 'contents' });
+
+            $('#TempatLahirKec').css({ 'visibility': 'hidden' });
+            $('#TempatLahirKec').css({ 'display': 'none' });
+            $('#TempatLahirKab').css({ 'visibility': 'hidden' });
+            $('#TempatLahirKab').css({ 'display': 'none' });
+            $('#TempatLahirProv').css({ 'visibility': 'hidden' });
+            $('#TempatLahirProv').css({ 'display': 'none' });
+            $('#TempatLahirNeg').css({ 'visibility': 'hidden' });
+            $('#TempatLahirNeg').css({ 'display': 'none' });
+        }
+        else if ($('#TempatLahir').val() == '3') {
+            $('#TempatLahirDesa').css({ 'visibility': 'visible' });
+            $('#TempatLahirDesa').css({ 'display': 'contents' });
+            $('#TempatLahirKec').css({ 'visibility': 'visible' });
+            $('#TempatLahirKec').css({ 'display': 'contents' });
+
+            $('#TempatLahirKab').css({ 'visibility': 'hidden' });
+            $('#TempatLahirKab').css({ 'display': 'none' });
+            $('#TempatLahirProv').css({ 'visibility': 'hidden' });
+            $('#TempatLahirProv').css({ 'display': 'none' });
+            $('#TempatLahirNeg').css({ 'visibility': 'hidden' });
+            $('#TempatLahirNeg').css({ 'display': 'none' });
+        }
+        else if ($('#TempatLahir').val() == '4') {
+            $('#TempatLahirDesa').css({ 'visibility': 'visible' });
+            $('#TempatLahirDesa').css({ 'display': 'contents' });
+            $('#TempatLahirKec').css({ 'visibility': 'visible' });
+            $('#TempatLahirKec').css({ 'display': 'contents' });
+            $('#TempatLahirKab').css({ 'visibility': 'visible' });
+            $('#TempatLahirKab').css({ 'display': 'contents' });
+
+            $('#TempatLahirProv').css({ 'visibility': 'hidden' });
+            $('#TempatLahirProv').css({ 'display': 'none' });
+            $('#TempatLahirNeg').css({ 'visibility': 'hidden' });
+            $('#TempatLahirNeg').css({ 'display': 'none' });
+        }
+        else if ($('#TempatLahir').val() == '5') {
+            $('#TempatLahirDesa').css({ 'visibility': 'visible' });
+            $('#TempatLahirDesa').css({ 'display': 'contents' });
+            $('#TempatLahirKec').css({ 'visibility': 'visible' });
+            $('#TempatLahirKec').css({ 'display': 'contents' });
+            $('#TempatLahirKab').css({ 'visibility': 'visible' });
+            $('#TempatLahirKab').css({ 'display': 'contents' });
+            $('#TempatLahirProv').css({ 'visibility': 'visible' });
+            $('#TempatLahirProv').css({ 'display': 'contents' });
+
+            $('#TempatLahirNeg').css({ 'visibility': 'hidden' });
+            $('#TempatLahirNeg').css({ 'display': 'none' });
+        }
+        else if ($('#TempatLahir').val() == '6') {
+            $('#TempatLahirNeg').css({ 'visibility': 'visible' });
+            $('#TempatLahirNeg').css({ 'display': 'contents' });
+
+            $('#TempatLahirDesa').css({ 'visibility': 'hidden' });
+            $('#TempatLahirDesa').css({ 'display': 'none' });
+            $('#TempatLahirKec').css({ 'visibility': 'hidden' });
+            $('#TempatLahirKec').css({ 'display': 'none' });
+            $('#TempatLahirKab').css({ 'visibility': 'hidden' });
+            $('#TempatLahirKab').css({ 'display': 'none' });
+            $('#TempatLahirProv').css({ 'visibility': 'hidden' });
+            $('#TempatLahirProv').css({ 'display': 'none' });
+        }
+        else {
+            $('#TempatLahirDesa').css({ 'visibility': 'hidden' });
+            $('#TempatLahirDesa').css({ 'display': 'none' });
+            $('#TempatLahirKec').css({ 'visibility': 'hidden' });
+            $('#TempatLahirKec').css({ 'display': 'none' });
+            $('#TempatLahirKab').css({ 'visibility': 'hidden' });
+            $('#TempatLahirKab').css({ 'display': 'none' });
+            $('#TempatLahirProv').css({ 'visibility': 'hidden' });
+            $('#TempatLahirProv').css({ 'display': 'none' });
+            $('#TempatLahirNeg').css({ 'visibility': 'hidden' });
+            $('#TempatLahirNeg').css({ 'display': 'none' });
+        }
+    }
+
+    function showTempatTinggalLaluDetail() {
+        if ($('#TempatTinggalLalu').val() == '2') {
+            $('#TempatTinggalLaluDesa').css({ 'visibility': 'visible' });
+            $('#TempatTinggalLaluDesa').css({ 'display': 'contents' });
+
+            $('#TempatTinggalLaluKec').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluKec').css({ 'display': 'none' });
+            $('#TempatTinggalLaluKab').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluKab').css({ 'display': 'none' });
+            $('#TempatTinggalLaluProv').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluProv').css({ 'display': 'none' });
+            $('#TempatTinggalLaluNeg').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluNeg').css({ 'display': 'none' });
+        }
+        else if ($('#TempatTinggalLalu').val() == '3') {
+            $('#TempatTinggalLaluDesa').css({ 'visibility': 'visible' });
+            $('#TempatTinggalLaluDesa').css({ 'display': 'contents' });
+            $('#TempatTinggalLaluKec').css({ 'visibility': 'visible' });
+            $('#TempatTinggalLaluKec').css({ 'display': 'contents' });
+
+            $('#TempatTinggalLaluKab').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluKab').css({ 'display': 'none' });
+            $('#TempatTinggalLaluProv').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluProv').css({ 'display': 'none' });
+            $('#TempatTinggalLaluNeg').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluNeg').css({ 'display': 'none' });
+        }
+        else if ($('#TempatTinggalLalu').val() == '4') {
+            $('#TempatTinggalLaluDesa').css({ 'visibility': 'visible' });
+            $('#TempatTinggalLaluDesa').css({ 'display': 'contents' });
+            $('#TempatTinggalLaluKec').css({ 'visibility': 'visible' });
+            $('#TempatTinggalLaluKec').css({ 'display': 'contents' });
+            $('#TempatTinggalLaluKab').css({ 'visibility': 'visible' });
+            $('#TempatTinggalLaluKab').css({ 'display': 'contents' });
+
+            $('#TempatTinggalLaluProv').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluProv').css({ 'display': 'none' });
+            $('#TempatTinggalLaluNeg').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluNeg').css({ 'display': 'none' });
+        }
+        else if ($('#TempatTinggalLalu').val() == '5') {
+            $('#TempatTinggalLaluDesa').css({ 'visibility': 'visible' });
+            $('#TempatTinggalLaluDesa').css({ 'display': 'contents' });
+            $('#TempatTinggalLaluKec').css({ 'visibility': 'visible' });
+            $('#TempatTinggalLaluKec').css({ 'display': 'contents' });
+            $('#TempatTinggalLaluKab').css({ 'visibility': 'visible' });
+            $('#TempatTinggalLaluKab').css({ 'display': 'contents' });
+            $('#TempatTinggalLaluProv').css({ 'visibility': 'visible' });
+            $('#TempatTinggalLaluProv').css({ 'display': 'contents' });
+
+            $('#TempatTinggalLaluNeg').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluNeg').css({ 'display': 'none' });
+        }
+        else if ($('#TempatTinggalLalu').val() == '6') {
+            $('#TempatTinggalLaluNeg').css({ 'visibility': 'visible' });
+            $('#TempatTinggalLaluNeg').css({ 'display': 'contents' });
+
+            $('#TempatTinggalLaluDesa').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluDesa').css({ 'display': 'none' });
+            $('#TempatTinggalLaluKec').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluKec').css({ 'display': 'none' });
+            $('#TempatTinggalLaluKab').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluKab').css({ 'display': 'none' });
+            $('#TempatTinggalLaluProv').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluProv').css({ 'display': 'none' });
+        }
+        else {
+            $('#TempatTinggalLaluDesa').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluDesa').css({ 'display': 'none' });
+            $('#TempatTinggalLaluKec').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluKec').css({ 'display': 'none' });
+            $('#TempatTinggalLaluKab').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluKab').css({ 'display': 'none' });
+            $('#TempatTinggalLaluProv').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluProv').css({ 'display': 'none' });
+            $('#TempatTinggalLaluNeg').css({ 'visibility': 'hidden' });
+            $('#TempatTinggalLaluNeg').css({ 'display': 'none' });
+        }
+    }
+
+    function showPekerjaanUtamaLainnya() {
+        if ($('#PekerjaanUtama').val() == '12') {
+            $('#PekerjaanUtamaLainnya').css({ 'visibility': 'visible' });
+            $('#PekerjaanUtamaLainnya').css({ 'display': 'contents' });
+        }
+        else {
+            $('#PekerjaanUtamaLainnya').css({ 'visibility': 'hidden' });
+            $('#PekerjaanUtamaLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    function showPekerjaanSampinganLainnya() {
+        if ($('#PekerjaanSampingan').val() == '12') {
+            $('#PekerjaanSampinganLainnya').css({ 'visibility': 'visible' });
+            $('#PekerjaanSampinganLainnya').css({ 'display': 'contents' });
+        }
+        else {
+            $('#PekerjaanSampinganLainnya').css({ 'visibility': 'hidden' });
+            $('#PekerjaanSampinganLainnya').css({ 'display': 'none' });
+        }
+    }
+
+    function showLokasiKerjaUtamaDetail() {
+        if ($('#LokasiKerjaUtama').val() == '2') {
+            $('#LokasiKerjaUtamaDesa').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaUtamaDesa').css({ 'display': 'contents' });
+
+            $('#LokasiKerjaUtamaKec').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaKec').css({ 'display': 'none' });
+            $('#LokasiKerjaUtamaKab').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaKab').css({ 'display': 'none' });
+            $('#LokasiKerjaUtamaProv').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaProv').css({ 'display': 'none' });
+            $('#LokasiKerjaUtamaNeg').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaNeg').css({ 'display': 'none' });
+        }
+        else if ($('#LokasiKerjaUtama').val() == '3') {
+            $('#LokasiKerjaUtamaDesa').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaUtamaDesa').css({ 'display': 'contents' });
+            $('#LokasiKerjaUtamaKec').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaUtamaKec').css({ 'display': 'contents' });
+
+            $('#LokasiKerjaUtamaKab').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaKab').css({ 'display': 'none' });
+            $('#LokasiKerjaUtamaProv').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaProv').css({ 'display': 'none' });
+            $('#LokasiKerjaUtamaNeg').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaNeg').css({ 'display': 'none' });
+        }
+        else if ($('#LokasiKerjaUtama').val() == '4') {
+            $('#LokasiKerjaUtamaDesa').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaUtamaDesa').css({ 'display': 'contents' });
+            $('#LokasiKerjaUtamaKec').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaUtamaKec').css({ 'display': 'contents' });
+            $('#LokasiKerjaUtamaKab').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaUtamaKab').css({ 'display': 'contents' });
+
+            $('#LokasiKerjaUtamaProv').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaProv').css({ 'display': 'none' });
+            $('#LokasiKerjaUtamaNeg').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaNeg').css({ 'display': 'none' });
+        }
+        else if ($('#LokasiKerjaUtama').val() == '5') {
+            $('#LokasiKerjaUtamaDesa').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaUtamaDesa').css({ 'display': 'contents' });
+            $('#LokasiKerjaUtamaKec').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaUtamaKec').css({ 'display': 'contents' });
+            $('#LokasiKerjaUtamaKab').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaUtamaKab').css({ 'display': 'contents' });
+            $('#LokasiKerjaUtamaProv').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaUtamaProv').css({ 'display': 'contents' });
+
+            $('#LokasiKerjaUtamaNeg').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaNeg').css({ 'display': 'none' });
+        }
+        else if ($('#LokasiKerjaUtama').val() == '6') {
+            $('#LokasiKerjaUtamaNeg').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaUtamaNeg').css({ 'display': 'contents' });
+
+            $('#LokasiKerjaUtamaDesa').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaDesa').css({ 'display': 'none' });
+            $('#LokasiKerjaUtamaKec').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaKec').css({ 'display': 'none' });
+            $('#LokasiKerjaUtamaKab').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaKab').css({ 'display': 'none' });
+            $('#LokasiKerjaUtamaProv').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaProv').css({ 'display': 'none' });
+        }
+        else {
+            $('#LokasiKerjaUtamaDesa').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaDesa').css({ 'display': 'none' });
+            $('#LokasiKerjaUtamaKec').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaKec').css({ 'display': 'none' });
+            $('#LokasiKerjaUtamaKab').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaKab').css({ 'display': 'none' });
+            $('#LokasiKerjaUtamaProv').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaProv').css({ 'display': 'none' });
+            $('#LokasiKerjaUtamaNeg').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaUtamaNeg').css({ 'display': 'none' });
+        }
+    }
+
+    function showLokasiKerjaSampingDetail() {
+        if ($('#LokasiKerjaSamping').val() == '2') {
+            $('#LokasiKerjaSampingDesa').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaSampingDesa').css({ 'display': 'contents' });
+
+            $('#LokasiKerjaSampingKec').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingKec').css({ 'display': 'none' });
+            $('#LokasiKerjaSampingKab').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingKab').css({ 'display': 'none' });
+            $('#LokasiKerjaSampingProv').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingProv').css({ 'display': 'none' });
+            $('#LokasiKerjaSampingNeg').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingNeg').css({ 'display': 'none' });
+        }
+        else if ($('#LokasiKerjaSamping').val() == '3') {
+            $('#LokasiKerjaSampingDesa').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaSampingDesa').css({ 'display': 'contents' });
+            $('#LokasiKerjaSampingKec').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaSampingKec').css({ 'display': 'contents' });
+
+            $('#LokasiKerjaSampingKab').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingKab').css({ 'display': 'none' });
+            $('#LokasiKerjaSampingProv').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingProv').css({ 'display': 'none' });
+            $('#LokasiKerjaSampingNeg').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingNeg').css({ 'display': 'none' });
+        }
+        else if ($('#LokasiKerjaSamping').val() == '4') {
+            $('#LokasiKerjaSampingDesa').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaSampingDesa').css({ 'display': 'contents' });
+            $('#LokasiKerjaSampingKec').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaSampingKec').css({ 'display': 'contents' });
+            $('#LokasiKerjaSampingKab').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaSampingKab').css({ 'display': 'contents' });
+
+            $('#LokasiKerjaSampingProv').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingProv').css({ 'display': 'none' });
+            $('#LokasiKerjaSampingNeg').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingNeg').css({ 'display': 'none' });
+        }
+        else if ($('#LokasiKerjaSamping').val() == '5') {
+            $('#LokasiKerjaSampingDesa').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaSampingDesa').css({ 'display': 'contents' });
+            $('#LokasiKerjaSampingKec').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaSampingKec').css({ 'display': 'contents' });
+            $('#LokasiKerjaSampingKab').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaSampingKab').css({ 'display': 'contents' });
+            $('#LokasiKerjaSampingProv').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaSampingProv').css({ 'display': 'contents' });
+
+            $('#LokasiKerjaSampingNeg').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingNeg').css({ 'display': 'none' });
+        }
+        else if ($('#LokasiKerjaSamping').val() == '6') {
+            $('#LokasiKerjaSampingNeg').css({ 'visibility': 'visible' });
+            $('#LokasiKerjaSampingNeg').css({ 'display': 'contents' });
+
+            $('#LokasiKerjaSampingDesa').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingDesa').css({ 'display': 'none' });
+            $('#LokasiKerjaSampingKec').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingKec').css({ 'display': 'none' });
+            $('#LokasiKerjaSampingKab').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingKab').css({ 'display': 'none' });
+            $('#LokasiKerjaSampingProv').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingProv').css({ 'display': 'none' });
+        }
+        else {
+            $('#LokasiKerjaSampingDesa').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingDesa').css({ 'display': 'none' });
+            $('#LokasiKerjaSampingKec').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingKec').css({ 'display': 'none' });
+            $('#LokasiKerjaSampingKab').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingKab').css({ 'display': 'none' });
+            $('#LokasiKerjaSampingProv').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingProv').css({ 'display': 'none' });
+            $('#LokasiKerjaSampingNeg').css({ 'visibility': 'hidden' });
+            $('#LokasiKerjaSampingNeg').css({ 'display': 'none' });
+        }
+    }
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,196 @@
+﻿@model IEnumerable<AgrariaSurvey.Models.AnggotaRumahTangga>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" asp-route-respondenId="@ViewBag.RespondenID">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NoART)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HubunganDenganKepalaKeluarga)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JenisKelamin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Umur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusNikah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EtnisSuku)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BahasaSehari)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PendidikanTertinggi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatLahir)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempatTinggalLalu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PekerjaanUtama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LokasiKerjaUtama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PekerjaanUSampingan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LokasiKerjaSamping)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="font-weight: bold;">
+                (E01)
+            </td>
+            <td style="font-weight: bold;">
+                (E02)
+            </td>
+            <td style="font-weight: bold;">
+                (E03)
+            </td>
+            <td style="font-weight: bold;">
+                (E04)
+            </td>
+            <td style="font-weight: bold;">
+                (E05)
+            </td>
+            <td style="font-weight: bold;">
+                (E06)
+            </td>
+            <td style="font-weight: bold;">
+                (E07)
+            </td>
+            <td style="font-weight: bold;">
+                (E08)
+            </td>
+            <td style="font-weight: bold;">
+                (E09)
+            </td>
+            <td style="font-weight: bold;">
+                (E10)
+            </td>
+            <td style="font-weight: bold;">
+                (E11)
+            </td>
+            <td style="font-weight: bold;">
+                (E12)
+            </td>
+            <td style="font-weight: bold;">
+                (E13)
+            </td>
+            <td style="font-weight: bold;">
+                (E14)
+            </td>
+            <td style="font-weight: bold;">
+                (E15)
+            </td>
+            <td></td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoART)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nama)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HubunganDenganKepalaKeluarga)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JenisKelamin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Umur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StatusNikah)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EtnisSuku)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BahasaSehari)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PendidikanTertinggi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TempatLahir)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TempatTinggalLalu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PekerjaanUtama)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LokasiKerjaUtama)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PekerjaanUSampingan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LokasiKerjaSamping)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AnggotaRumahTanggaID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AnggotaRumahTanggaID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.AnggotaRumahTanggaID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+<div>
+    <a asp-controller="Respondens" asp-action="Index" asp-route-id="@ViewBag.RespondenID" class="btn btn-primary">Next</a>
+</div>
+<br>
+<div>
+    <a asp-controller="TanahWaris" asp-action="Edit" asp-route-id="@ViewBag.RespondenID" class="btn btn-primary">Edit TanahWaris</a>
+</div>
+<br>
+<div>
+    <a asp-controller="TanahWaris" asp-action="Create" asp-route-id="@ViewBag.RespondenID" class="btn btn-primary">Create TanahWaris</a>
+</div>
+<hr />
+@if (ViewBag.Act == "Create")
+{
+    <div>
+        <a asp-controller="Respondens" asp-action="Cancel" asp-route-id="@ViewBag.RespondenID" class="btn btn-danger">Cancel</a>
+    </div>
+}
+else if (ViewBag.Act == "Edit" || ViewBag.Act == "Details")
+{
+    <div>
+        <a asp-controller="Respondens" asp-action="Index">Back to List</a>
+    </div>
+}

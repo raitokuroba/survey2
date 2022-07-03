@@ -1,0 +1,221 @@
+﻿@model IEnumerable<AgrariaSurvey.Models.BagiHasil>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RespondenId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BagiHasilMilik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KepadaSiapaPengelolaan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlasanBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LuasBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KomposisiBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LokasiBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TahunBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TahunKontrakBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BentukLegalitasBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsahaBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TanahBagiHasilSubur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasilUsahaBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenagaMengelolaBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JumlahAnggotaBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JumlahBuruhTaniBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AsalBuruhTaniBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BagiHasilKelola)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KepadaSiapaBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LuasTanahBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LokasiTanahBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LegalitasBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlasanMenggarapBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsahakanBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KomposisiBagi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JangkaWaktuBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TanahBagiSubur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsahaTanahBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenagaKerjaBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnggotaKeluargaBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuruhTaniBagiHasil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuruhTaniAsal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RespondenId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BagiHasilMilik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KepadaSiapaPengelolaan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlasanBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LuasBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KomposisiBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LokasiBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TahunBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TahunKontrakBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BentukLegalitasBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsahaBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TanahBagiHasilSubur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasilUsahaBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenagaMengelolaBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JumlahAnggotaBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JumlahBuruhTaniBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AsalBuruhTaniBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BagiHasilKelola)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KepadaSiapaBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LuasTanahBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LokasiTanahBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LegalitasBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlasanMenggarapBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsahakanBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KomposisiBagi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JangkaWaktuBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TanahBagiSubur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsahaTanahBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenagaKerjaBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnggotaKeluargaBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuruhTaniBagiHasil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuruhTaniAsal)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BagiHasilId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BagiHasilId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BagiHasilId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
